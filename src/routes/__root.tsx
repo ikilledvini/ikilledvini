@@ -81,10 +81,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Portfólio de Vinicius de Alencar (ikilledvini) — Manager de Influenciadores, Gestor de Comunidades Digitais e Técnico em Desenvolvimento de Sistemas." },
       { name: "author", content: "Vinicius de Alencar" },
       { property: "og:title", content: "Vinicius de Alencar — ikilledvini" },
-      { property: "og:description", content: "Manager de Influenciadores, Gestor de Comunidades Digitais e Técnico em Desenvolvimento de Sistemas." },
+      { property: "og:description", content: "Portfólio de Vinicius de Alencar (ikilledvini) — Manager de Influenciadores, Gestor de Comunidades Digitais e Técnico em Desenvolvimento de Sistemas." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Vinicius de Alencar — ikilledvini" },
+      { name: "twitter:description", content: "Portfólio de Vinicius de Alencar (ikilledvini) — Manager de Influenciadores, Gestor de Comunidades Digitais e Técnico em Desenvolvimento de Sistemas." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/LrTZyPHjPZOeQr4f0R7fFLBI8Q63/social-images/social-1780198880595-IMG_0302.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/LrTZyPHjPZOeQr4f0R7fFLBI8Q63/social-images/social-1780198880595-IMG_0302.webp" },
     ],
     links: [
       {
