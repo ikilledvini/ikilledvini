@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Mail, Instagram, MessageCircle, Moon, Sun, ExternalLink, Menu, X } from "lucide-react";
+import { Mail, Instagram, MessageCircle, Moon, Sun, ExternalLink } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
 
 export const Route = createFileRoute("/")({
@@ -17,7 +17,6 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [dark, setDark] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -52,14 +51,14 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#top" className="text-sm font-bold tracking-tight">
             ikilled<span className="text-primary">vini</span>
           </a>
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="flex items-center gap-4 md:gap-8">
             {navItems.map((n) => (
-              <a key={n.href} href={n.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+              <a key={n.href} href={n.href} className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline">
                 {n.label}
               </a>
             ))}
@@ -71,26 +70,7 @@ function Index() {
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
           </div>
-          <div className="flex items-center gap-2 md:hidden">
-            <button onClick={() => setDark((d) => !d)} className="rounded-full border border-border p-2">
-              {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
-            <button onClick={() => setMenuOpen((o) => !o)} className="rounded-full border border-border p-2">
-              {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-            </button>
-          </div>
         </nav>
-        {menuOpen && (
-          <div className="border-t border-border bg-background md:hidden">
-            <div className="flex flex-col px-6 py-4">
-              {navItems.map((n) => (
-                <a key={n.href} href={n.href} onClick={() => setMenuOpen(false)} className="py-2 text-sm font-medium">
-                  {n.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
       </header>
 
       <main id="top" className="mx-auto max-w-6xl px-6 pt-32">
@@ -125,10 +105,11 @@ function Index() {
         {/* SOBRE */}
         <Section id="sobre" title={<>Sobre <span className="text-primary">Mim</span></>}>
           <p className="max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Tenho 16 anos e desde cedo descobri que adoro conectar pessoas e construir coisas que fazem
-            diferença online. Comecei na gestão de comunidades digitais, passei pela robótica competitiva
-            e hoje trabalho ajudando influenciadores e marcas a crescerem de forma autêntica. Sou curioso
-            por natureza, aprendo rápido e gosto de estar sempre no meio de projetos novos e desafiadores.
+            Olá! Meu nome é Vinicius, tenho 17 anos e desde sempre tive uma paixão em me apresentar e
+            sentir que consegui conectar as pessoas. Comecei na robótica competitiva, passei pela gestão
+            exclusiva de comunidades digitais e hoje trabalho ajudando influenciadores e marcas a crescerem
+            de forma orgânica. Sou curioso por natureza, autodidata e sempre gosto de estar fazendo coisas
+            que me instiguem a aprender mais.
           </p>
         </Section>
 
@@ -138,29 +119,59 @@ function Index() {
             <TrajectoryBlock
               year="2023"
               title="Robótica"
-              body="Aos 14 anos, fui campeão regional de robótica pelo SENAI, o que me rendeu uma viagem gratuita para Brasília para representar minha região na etapa nacional. Foi minha primeira grande conquista fora de casa, e me mostrou que dedicação e trabalho em equipe levam longe."
+              body="Aos 14 anos, fui campeão do Torneio Regional SESI de Robótica, o que me rendeu uma viagem gratuita para Brasília para representar minha região na etapa nacional. Foi minha primeira grande conquista fora de casa, e me mostrou que dedicação e trabalho em equipe levam longe."
             />
             <TrajectoryBlock
               year="2024"
               title="Comunidades Digitais"
-              body="Em 2024, mergulhei de cabeça na gestão de comunidades digitais. Aprendi tanto a construir servidores do zero para influenciadores e empresas — com estrutura, identidade visual e organização — quanto a manter essas comunidades vivas com dinâmicas engajadas, eventos e estratégias que fazem os membros quererem ficar e crescer juntos."
+              body="Em 2024, mergulhei de cabeça na gestão de comunidades digitais. Aprendi tanto a construir servidores do zero para influenciadores e empresas, com estrutura, identidade visual e organização, quanto a manter essas comunidades vivas com dinâmicas engajadas, eventos e estratégias que fazem os membros quererem ficar e crescer juntos."
             />
-            <TrajectoryBlock
-              year="2025"
-              title="Manager de Influenciadores"
-              body="Atuando como manager de influenciadores, conectei criadores de conteúdo a campanhas pagas com marcas como Block Blast, Fifine, Havit e Duolingo. Juntos, geramos mais de 7 milhões de visualizações para essas marcas, entregando resultados reais e mensuráveis."
-            />
+            <div className="rounded-xl border-2 border-primary bg-primary/5 p-6 md:col-span-1">
+              <p className="text-xs font-bold uppercase tracking-widest text-primary">2025</p>
+              <h3 className="mt-2 text-lg font-bold">Manager de Influenciadores</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Conectei criadores de conteúdo a campanhas pagas com grandes marcas, entregando
+                resultados reais e mensuráveis.
+              </p>
+            </div>
+          </div>
+
+          {/* DESTAQUE MANAGER */}
+          <div className="mt-10 overflow-hidden rounded-2xl border-2 border-primary bg-primary/5 p-8 md:p-12">
+            <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-primary">Marcas que confiaram no trabalho</p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {["Block Blast", "Fifine", "Havit", "Duolingo"].map((brand) => (
+                    <span
+                      key={brand}
+                      className="rounded-full border-2 border-primary bg-background px-5 py-2 text-sm font-bold text-primary"
+                    >
+                      {brand}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="text-center md:text-right">
+                <p className="text-5xl font-extrabold leading-none tracking-tight text-primary md:text-7xl">
+                  +7M
+                </p>
+                <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                  visualizações geradas
+                </p>
+              </div>
+            </div>
           </div>
         </Section>
 
         {/* EXPERIÊNCIA */}
         <Section id="experiencia" title={<>Experiência <span className="text-primary">Profissional</span></>}>
-          <h3 className="mb-6 text-lg font-semibold">Robótica e Inovação 🤖</h3>
+          <h3 className="mb-6 text-lg font-semibold">Robótica e Inovação</h3>
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
               <p className="text-sm font-medium text-primary">Conclusão: Março/2024</p>
               <h4 className="mt-2 text-xl font-bold">Equipe de Robótica NEW XP</h4>
-              <p className="mt-1 text-sm text-muted-foreground">Competidor — Design / Marketing</p>
+              <p className="mt-1 text-sm text-muted-foreground">Competidor · Design / Marketing</p>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 Campeões regionais. Criação de identidade visual da equipe, materiais de apresentação e
                 comunicação externa. A equipe avançou para a etapa nacional.
@@ -169,7 +180,7 @@ function Index() {
             <Card>
               <p className="text-sm font-medium text-primary">Conclusão: Março/2025</p>
               <h4 className="mt-2 text-xl font-bold">Equipe de Robótica Clusters #16053</h4>
-              <p className="mt-1 text-sm text-muted-foreground">Competidor — Design / Outreach</p>
+              <p className="mt-1 text-sm text-muted-foreground">Competidor · Design / Outreach</p>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 Desenvolvimento de materiais visuais, branding da equipe e comunicação com patrocinadores
                 em ambiente competitivo.
@@ -181,7 +192,7 @@ function Index() {
         {/* FORMAÇÃO */}
         <Section id="formacao" title="Formação Acadêmica">
           <Card>
-            <h4 className="text-xl font-bold">Técnico em Desenvolvimento de Sistemas — SENAI</h4>
+            <h4 className="text-xl font-bold">Técnico em Desenvolvimento de Sistemas, SENAI</h4>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Formação técnica completa com foco em tecnologia e desenvolvimento de soluções digitais.
             </p>
@@ -239,9 +250,7 @@ function Index() {
                 Branding, comunicação estratégica, organização de eventos digitais, gestão de conteúdo e
                 supervisão de equipe.
               </p>
-              <a href="https://discord.gg/casabrawl" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
-                Entrar na comunidade <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              <p className="mt-5 text-xs italic text-muted-foreground">Comunidade desativada</p>
             </Card>
           </div>
 
@@ -276,7 +285,7 @@ function Index() {
           </div>
 
           <p className="mt-10 text-center text-sm font-medium text-muted-foreground">
-            🏅 Administração ativa de mais de 38.000 membros em ecossistemas digitais diversos
+            Administração ativa de mais de 38.000 membros em ecossistemas digitais diversos
           </p>
         </Section>
 
@@ -296,7 +305,7 @@ function Index() {
           </div>
           <div className="mt-10 rounded-xl border-2 border-primary bg-primary/5 p-6 text-center">
             <p className="text-sm font-semibold md:text-base">
-              Disponível para novos projetos — <span className="text-primary">Consultorias e colaborações digitais</span>
+              Disponível para novos projetos: <span className="text-primary">Consultorias e colaborações digitais</span>
             </p>
           </div>
         </Section>
