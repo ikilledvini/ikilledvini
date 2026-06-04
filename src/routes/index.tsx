@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Mail, Instagram, MessageCircle, Moon, Sun, ExternalLink } from "lucide-react";
+import { Mail, Instagram, MessageCircle, Moon, Sun } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
+import bueiroImg from "@/assets/bueiro.jpg.asset.json";
+import joaoImg from "@/assets/joao.jpg.asset.json";
+import casaBrawlImg from "@/assets/casabrawl.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -241,11 +244,16 @@ function Index() {
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">Soluções para Marcas</h3>
           <div className="mb-10">
             <Card>
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h4 className="text-xl font-bold">Casa Brawl</h4>
-                <span className="text-sm font-semibold text-primary">+5.000 membros</span>
+              <div className="flex items-start gap-4">
+                <img src={casaBrawlImg.url} alt="Casa Brawl" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h4 className="text-xl font-bold">Casa Brawl</h4>
+                    <span className="text-sm font-semibold text-primary">+5.000 membros</span>
+                  </div>
+                  <p className="mt-1 text-sm text-muted-foreground">Diretor de Comunicações</p>
+                </div>
               </div>
-              <p className="mt-1 text-sm text-muted-foreground">Diretor de Comunicações</p>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 Branding, comunicação estratégica, organização de eventos digitais, gestão de conteúdo e
                 supervisão de equipe.
@@ -257,11 +265,16 @@ function Index() {
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">Soluções para Influenciadores</h3>
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h4 className="text-xl font-bold">Clube do Joaopdzin</h4>
-                <span className="text-sm font-semibold text-primary">+30.000 membros</span>
+              <div className="flex items-start gap-4">
+                <img src={joaoImg.url} alt="Clube do Joaopdzin" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h4 className="text-xl font-bold">Clube do Joaopdzin</h4>
+                    <span className="text-sm font-semibold text-primary">+30.000 membros</span>
+                  </div>
+                  <p className="mt-1 text-sm text-muted-foreground">Diretor Executivo</p>
+                </div>
               </div>
-              <p className="mt-1 text-sm text-muted-foreground">Diretor Executivo</p>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 Gestão operacional, engajamento, monitoramento de métricas, sistemas de moderação avançada
                 e monetização.
@@ -269,18 +282,21 @@ function Index() {
               <p className="mt-5 text-xs italic text-muted-foreground">Comunidade desativada</p>
             </Card>
             <Card>
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h4 className="text-xl font-bold">Bueiro do Neston</h4>
-                <span className="text-sm font-semibold text-primary">+3.800 membros</span>
+              <div className="flex items-start gap-4">
+                <img src={bueiroImg.url} alt="Bueiro do Neston" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h4 className="text-xl font-bold">Bueiro do Neston</h4>
+                    <span className="text-sm font-semibold text-primary">+3.800 membros</span>
+                  </div>
+                  <p className="mt-1 text-sm text-muted-foreground">Diretor Executivo</p>
+                </div>
               </div>
-              <p className="mt-1 text-sm text-muted-foreground">Diretor Executivo</p>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 Direção estrutural, moderação tática, cultura organizacional, coordenação de equipes e
                 estratégias de crescimento.
               </p>
-              <a href="https://discord.gg/bueirodoneston" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
-                Entrar na comunidade <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              <p className="mt-5 text-xs italic text-muted-foreground">Comunidade desativada</p>
             </Card>
           </div>
 
