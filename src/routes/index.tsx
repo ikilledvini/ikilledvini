@@ -368,3 +368,194 @@ function TrajectoryBlock({ year, title, body }: { year: string; title: string; b
     </div>
   );
 }
+
+const DUOLINGO_GREEN = "#65CC00";
+
+function CasesSection() {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+    const slides = Array.from(scroller.querySelectorAll<HTMLElement>("[data-case-slide]"));
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && e.intersectionRatio >= 0.6) {
+            const idx = Number((e.target as HTMLElement).dataset.index ?? 0);
+            setActive(idx);
+          }
+        });
+      },
+      { root: scroller, threshold: [0.6] },
+    );
+    slides.forEach((s) => obs.observe(s));
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <section id="cases" className="fade-in-up scroll-mt-24 border-t border-border py-20">
+      <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+        | CASES DE SUCESSO
+      </p>
+      <h2 className="mb-8 text-center text-3xl font-extrabold tracking-tight md:text-4xl">
+        PARCERIAS <span className="text-primary">REALIZADAS</span>
+      </h2>
+
+      <div className="mb-8 flex justify-center gap-3">
+        <span
+          className="rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all"
+          style={{
+            background: active === 0 ? "var(--primary)" : "transparent",
+            color: active === 0 ? "var(--primary-foreground)" : "var(--muted-foreground)",
+            border: active === 0 ? "2px solid var(--primary)" : "2px solid var(--border)",
+          }}
+        >
+          Block Blast
+        </span>
+        <span
+          className="rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all"
+          style={{
+            background: active === 1 ? DUOLINGO_GREEN : "transparent",
+            color: active === 1 ? "#fff" : "var(--muted-foreground)",
+            border: active === 1 ? `2px solid ${DUOLINGO_GREEN}` : "2px solid var(--border)",
+          }}
+        >
+          Duolingo
+        </span>
+      </div>
+
+      <div
+        ref={scrollerRef}
+        className="no-scrollbar -mx-6 flex snap-x snap-mandatory overflow-x-auto scroll-smooth px-6"
+        style={{ scrollSnapType: "x mandatory" }}
+      >
+        <CaseSlide
+          index={0}
+          accent="var(--primary)"
+          accentText="text-primary"
+          badge="BLOCK BLAST"
+          videoTitle="EU AMO JOGAR #blockblast"
+          titleNodes={
+            <>
+              9 VÍDEOS, +7 <span className="text-primary">MILHÕES</span> DE VISUALIZAÇÕES
+            </>
+          }
+          description='Campanha de 9 vídeos com integração da marca, somando mais de 7 milhões de visualizações e excelente performance de retenção.'
+          metrics={[
+            { value: "9", label: "VÍDEOS", colored: false },
+            { value: "+7M", label: "VISUALIZAÇÕES", colored: false },
+            { value: "Alta", label: "RETENÇÃO", colored: true },
+          ]}
+        />
+        <CaseSlide
+          index={1}
+          accent={DUOLINGO_GREEN}
+          accentText=""
+          badge="DUOLINGO"
+          videoTitle="O @duolingobroficial REC..."
+          titleNodes={
+            <>
+              YOUTUBE <span style={{ color: DUOLINGO_GREEN }}>SHORT</span> COM A CORUJA
+            </>
+          }
+          description="Integração nativa em formato Short, gerando engajamento orgânico com a audiência gamer e reforçando o tom divertido da marca."
+          metrics={[
+            { value: "1", label: "SHORT", colored: false },
+            { value: "Nativo", label: "FORMATO", colored: true },
+            { value: "Orgânico", label: "ENGAJAMENTO", colored: true },
+          ]}
+        />
+      </div>
+    </section>
+  );
+}
+
+function CaseSlide({
+  index,
+  accent,
+  badge,
+  videoTitle,
+  titleNodes,
+  description,
+  metrics,
+}: {
+  index: number;
+  accent: string;
+  accentText: string;
+  badge: string;
+  videoTitle: string;
+  titleNodes: React.ReactNode;
+  description: string;
+  metrics: { value: string; label: string; colored: boolean }[];
+}) {
+  return (
+    <div
+      data-case-slide
+      data-index={index}
+      className="w-full flex-shrink-0 snap-start px-2"
+      style={{ scrollSnapAlign: "start" }}
+    >
+      <div className="grid items-center gap-10 rounded-2xl border border-border bg-card p-6 md:grid-cols-2 md:p-10">
+        {/* Mockup */}
+        <div className="mx-auto w-full max-w-[280px]">
+          <div className="overflow-hidden rounded-[2rem] border-4 border-foreground/80 bg-black shadow-2xl">
+            <div className="flex items-center gap-2 bg-black px-3 py-2 text-white">
+              <div className="h-6 w-6 flex-shrink-0 rounded-full bg-muted-foreground/40" />
+              <p className="truncate text-[10px] font-medium">{videoTitle}</p>
+            </div>
+            <div className="relative aspect-[9/16] w-full bg-neutral-900">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 shadow-lg">
+                  <Play className="ml-1 h-6 w-6 fill-white text-white" />
+                </div>
+              </div>
+              <div className="absolute bottom-2 left-2 right-2 text-[10px] text-white/80">João Pdzin</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div>
+          <span
+            className="inline-block rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-widest"
+            style={{ borderColor: accent, color: accent, background: "transparent" }}
+          >
+            {badge}
+          </span>
+          <h3 className="mt-4 text-2xl font-extrabold uppercase leading-tight tracking-tight md:text-4xl">
+            {titleNodes}
+          </h3>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">{description}</p>
+
+          <div className="mt-6 grid grid-cols-3 gap-3">
+            {metrics.map((m) => (
+              <div key={m.label} className="rounded-xl border border-border bg-muted/40 p-4 text-center">
+                <p
+                  className="text-2xl font-extrabold tracking-tight md:text-3xl"
+                  style={m.colored ? { color: accent } : undefined}
+                >
+                  {m.value}
+                </p>
+                <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                  {m.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <a
+            href="https://www.youtube.com/@joaopdzin"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-6 inline-block text-sm font-semibold underline-offset-4 hover:underline"
+            style={{ color: accent }}
+          >
+            Assistir no YouTube →
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
