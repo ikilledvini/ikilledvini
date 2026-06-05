@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Mail, Instagram, MessageCircle, Moon, Sun, Play } from "lucide-react";
+import { Mail, Instagram, MessageCircle, Moon, Sun, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
 import bueiroImg from "@/assets/bueiro.jpg.asset.json";
 import joaoImg from "@/assets/joao.jpg.asset.json";
