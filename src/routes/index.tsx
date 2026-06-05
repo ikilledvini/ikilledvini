@@ -329,7 +329,7 @@ function Index() {
 
       <footer className="mt-16 border-t border-border py-8">
         <div className="mx-auto max-w-6xl px-6 text-center text-sm text-muted-foreground">
-          © 2025 Vinicius de Alencar (ikilledvini). <span className="font-semibold text-foreground">Presença Digital é Poder.</span>
+          © 2026 ikilledvini (Vinicius de Alencar).
         </div>
       </footer>
     </div>
