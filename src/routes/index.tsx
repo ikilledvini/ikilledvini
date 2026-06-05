@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Mail, Instagram, MessageCircle, Moon, Sun } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Mail, Instagram, MessageCircle, Moon, Sun, Play } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
 import bueiroImg from "@/assets/bueiro.jpg.asset.json";
 import joaoImg from "@/assets/joao.jpg.asset.json";
@@ -47,6 +47,7 @@ function Index() {
   const navItems = [
     { href: "#sobre", label: "Sobre" },
     { href: "#trajetoria", label: "Trajetória" },
+    { href: "#cases", label: "Cases" },
     { href: "#projetos", label: "Projetos" },
     { href: "#contato", label: "Contato" },
   ];
@@ -141,11 +142,11 @@ function Index() {
 
           {/* DESTAQUE MANAGER */}
           <div className="mt-10 overflow-hidden rounded-2xl border-2 border-primary bg-primary/5 p-8 md:p-12">
-            <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
+            <div className="grid items-start gap-8 md:grid-cols-[1fr_auto]">
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-primary">Marcas que confiaram no trabalho</p>
                 <div className="mt-5 flex flex-wrap gap-3">
-                  {["Block Blast", "Fifine", "Havit", "Duolingo"].map((brand) => (
+                  {["Block Blast", "Duolingo"].map((brand) => (
                     <span
                       key={brand}
                       className="rounded-full border-2 border-primary bg-background px-5 py-2 text-sm font-bold text-primary"
@@ -155,17 +156,22 @@ function Index() {
                   ))}
                 </div>
               </div>
-              <div className="text-center md:text-right">
-                <p className="text-5xl font-extrabold leading-none tracking-tight text-primary md:text-7xl">
-                  +7M
-                </p>
-                <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-                  visualizações geradas
-                </p>
+              <div className="grid grid-cols-2 gap-6 text-center md:text-right">
+                <div>
+                  <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+7M</p>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">visualizações geradas</p>
+                </div>
+                <div>
+                  <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+R$20K</p>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">em parcerias movimentadas</p>
+                </div>
               </div>
             </div>
           </div>
         </Section>
+
+        {/* CASES DE SUCESSO */}
+        <CasesSection />
 
         {/* EXPERIÊNCIA */}
         <Section id="experiencia" title={<>Experiência <span className="text-primary">Profissional</span></>}>
