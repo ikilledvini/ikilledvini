@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Mail, Instagram, MessageCircle, Moon, Sun, Play } from "lucide-react";
+import { Mail, Instagram, MessageCircle, Moon, Sun, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
 import bueiroImg from "@/assets/bueiro.jpg.asset.json";
 import joaoImg from "@/assets/joao.jpg.asset.json";
@@ -394,6 +394,16 @@ function CasesSection() {
     return () => obs.disconnect();
   }, []);
 
+  const goTo = (idx: number) => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+    const slide = scroller.querySelector<HTMLElement>(`[data-case-slide][data-index="${idx}"]`);
+    if (slide) {
+      scroller.scrollTo({ left: slide.offsetLeft - scroller.offsetLeft, behavior: "smooth" });
+      setActive(idx);
+    }
+  };
+
   return (
     <section id="cases" className="fade-in-up scroll-mt-24 border-t border-border py-20">
       <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
@@ -404,8 +414,10 @@ function CasesSection() {
       </h2>
 
       <div className="mb-8 flex justify-center gap-3">
-        <span
-          className="rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all"
+        <button
+          type="button"
+          onClick={() => goTo(0)}
+          className="cursor-pointer rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all"
           style={{
             background: active === 0 ? "var(--primary)" : "transparent",
             color: active === 0 ? "var(--primary-foreground)" : "var(--muted-foreground)",
@@ -413,9 +425,11 @@ function CasesSection() {
           }}
         >
           Block Blast
-        </span>
-        <span
-          className="rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all"
+        </button>
+        <button
+          type="button"
+          onClick={() => goTo(1)}
+          className="cursor-pointer rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all"
           style={{
             background: active === 1 ? DUOLINGO_GREEN : "transparent",
             color: active === 1 ? "#fff" : "var(--muted-foreground)",
@@ -423,20 +437,41 @@ function CasesSection() {
           }}
         >
           Duolingo
-        </span>
+        </button>
       </div>
 
-      <div
-        ref={scrollerRef}
-        className="no-scrollbar -mx-6 flex snap-x snap-mandatory overflow-x-auto scroll-smooth px-6"
-        style={{ scrollSnapType: "x mandatory" }}
-      >
+      <div className="relative">
+        <button
+          type="button"
+          aria-label="Anterior"
+          onClick={() => goTo(0)}
+          disabled={active === 0}
+          className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-foreground/70 p-2 text-background backdrop-blur transition-opacity hover:bg-foreground disabled:cursor-not-allowed disabled:opacity-30 md:left-4"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          aria-label="Próximo"
+          onClick={() => goTo(1)}
+          disabled={active === 1}
+          className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-foreground/70 p-2 text-background backdrop-blur transition-opacity hover:bg-foreground disabled:cursor-not-allowed disabled:opacity-30 md:right-4"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+
+        <div
+          ref={scrollerRef}
+          className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth"
+          style={{ scrollSnapType: "x mandatory" }}
+        >
         <CaseSlide
           index={0}
           accent="var(--primary)"
           accentText="text-primary"
           badge="BLOCK BLAST"
           videoTitle="EU AMO JOGAR #blockblast"
+          videoUrl="https://www.youtube.com/watch?v=rjyJ3vNgt2Y"
           titleNodes={
             <>
               9 VÍDEOS, +7 <span className="text-primary">MILHÕES</span> DE VISUALIZAÇÕES
@@ -455,6 +490,7 @@ function CasesSection() {
           accentText=""
           badge="DUOLINGO"
           videoTitle="O @duolingobroficial REC..."
+          videoUrl="https://www.youtube.com/shorts/N8pCV7LtNtw"
           titleNodes={
             <>
               YOUTUBE <span style={{ color: DUOLINGO_GREEN }}>SHORT</span> COM A CORUJA
@@ -467,6 +503,7 @@ function CasesSection() {
             { value: "Orgânico", label: "ENGAJAMENTO", colored: true },
           ]}
         />
+        </div>
       </div>
     </section>
   );
@@ -477,6 +514,7 @@ function CaseSlide({
   accent,
   badge,
   videoTitle,
+  videoUrl,
   titleNodes,
   description,
   metrics,
@@ -486,6 +524,7 @@ function CaseSlide({
   accentText: string;
   badge: string;
   videoTitle: string;
+  videoUrl: string;
   titleNodes: React.ReactNode;
   description: string;
   metrics: { value: string; label: string; colored: boolean }[];
@@ -499,7 +538,12 @@ function CaseSlide({
     >
       <div className="grid items-center gap-10 rounded-2xl border border-border bg-card p-6 md:grid-cols-2 md:p-10">
         {/* Mockup */}
-        <div className="mx-auto w-full max-w-[280px]">
+        <a
+          href={videoUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mx-auto block w-full max-w-[280px] transition-transform hover:scale-[1.02]"
+        >
           <div className="overflow-hidden rounded-[2rem] border-4 border-foreground/80 bg-black shadow-2xl">
             <div className="flex items-center gap-2 bg-black px-3 py-2 text-white">
               <div className="h-6 w-6 flex-shrink-0 rounded-full bg-muted-foreground/40" />
@@ -514,7 +558,7 @@ function CaseSlide({
               <div className="absolute bottom-2 left-2 right-2 text-[10px] text-white/80">João Pdzin</div>
             </div>
           </div>
-        </div>
+        </a>
 
         {/* Content */}
         <div>
@@ -546,7 +590,7 @@ function CaseSlide({
           </div>
 
           <a
-            href="https://www.youtube.com/@joaopdzin"
+            href={videoUrl}
             target="_blank"
             rel="noreferrer"
             className="mt-6 inline-block text-sm font-semibold underline-offset-4 hover:underline"
