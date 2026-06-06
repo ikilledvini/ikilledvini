@@ -546,10 +546,17 @@ function CaseSlide({
       <div className="grid items-center gap-10 rounded-2xl border border-border bg-card p-6 md:grid-cols-2 md:p-10">
         {/* Mockup */}
         <div className="mx-auto block w-full max-w-[280px]">
-          <div className="overflow-hidden rounded-[2rem] border-4 border-foreground/80 bg-black shadow-2xl">
-            <div className="flex items-center gap-2 bg-black px-3 py-2 text-white">
-              <div className="h-6 w-6 flex-shrink-0 rounded-full bg-muted-foreground/40" />
-              <p className="truncate text-[10px] font-medium">{videoTitle}</p>
+          <div className="overflow-hidden rounded-[1.75rem] border-2 border-foreground/80 bg-black shadow-2xl">
+            <div className="flex items-center gap-2 bg-black px-3 pt-3 pb-2 text-white">
+              <img
+                src={joaoImg.url}
+                alt="João Pdzin"
+                className="h-7 w-7 flex-shrink-0 rounded-full object-cover"
+              />
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-[12px] font-bold leading-tight">{videoTitle}</p>
+                <p className="truncate text-[10px] leading-tight text-white/70">João Pdzin</p>
+              </div>
             </div>
             <div className="relative aspect-[9/16] w-full bg-neutral-900">
               {playing && videoId ? (
@@ -571,17 +578,14 @@ function CaseSlide({
                     <img
                       src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
                       alt={videoTitle}
-                      className="absolute inset-0 h-full w-full object-cover opacity-90"
+                      className="absolute inset-0 h-full w-full object-cover"
                       loading="lazy"
                     />
                   )}
                   <span className="absolute inset-0 flex items-center justify-center">
-                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 shadow-lg transition-transform group-hover:scale-110">
-                      <Play className="ml-1 h-6 w-6 fill-white text-white" />
+                    <span className="flex h-16 w-24 items-center justify-center rounded-2xl bg-red-600 shadow-xl transition-transform group-hover:scale-110">
+                      <Play className="ml-1 h-8 w-8 fill-white text-white" />
                     </span>
-                  </span>
-                  <span className="absolute bottom-2 left-2 right-2 text-left text-[10px] text-white/80">
-                    João Pdzin
                   </span>
                 </button>
               )}
