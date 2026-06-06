@@ -509,6 +509,11 @@ function CasesSection() {
   );
 }
 
+function extractYouTubeId(url: string): string | null {
+  const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:shorts\/|embed\/|watch\?v=|v\/))([\w-]{11})/);
+  return m ? m[1] : null;
+}
+
 function CaseSlide({
   index,
   accent,
