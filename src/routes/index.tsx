@@ -509,6 +509,11 @@ function CasesSection() {
   );
 }
 
+function extractYouTubeId(url: string): string | null {
+  const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:shorts\/|embed\/|watch\?v=|v\/))([\w-]{11})/);
+  return m ? m[1] : null;
+}
+
 function CaseSlide({
   index,
   accent,
@@ -529,6 +534,8 @@ function CaseSlide({
   description: string;
   metrics: { value: string; label: string; colored: boolean }[];
 }) {
+  const [playing, setPlaying] = useState(false);
+  const videoId = extractYouTubeId(videoUrl);
   return (
     <div
       data-case-slide
@@ -538,27 +545,49 @@ function CaseSlide({
     >
       <div className="grid items-center gap-10 rounded-2xl border border-border bg-card p-6 md:grid-cols-2 md:p-10">
         {/* Mockup */}
-        <a
-          href={videoUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="mx-auto block w-full max-w-[280px] transition-transform hover:scale-[1.02]"
-        >
+        <div className="mx-auto block w-full max-w-[280px]">
           <div className="overflow-hidden rounded-[2rem] border-4 border-foreground/80 bg-black shadow-2xl">
             <div className="flex items-center gap-2 bg-black px-3 py-2 text-white">
               <div className="h-6 w-6 flex-shrink-0 rounded-full bg-muted-foreground/40" />
               <p className="truncate text-[10px] font-medium">{videoTitle}</p>
             </div>
             <div className="relative aspect-[9/16] w-full bg-neutral-900">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 shadow-lg">
-                  <Play className="ml-1 h-6 w-6 fill-white text-white" />
-                </div>
-              </div>
-              <div className="absolute bottom-2 left-2 right-2 text-[10px] text-white/80">João Pdzin</div>
+              {playing && videoId ? (
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`}
+                  title={videoTitle}
+                  allow="accelerated-sensors; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setPlaying(true)}
+                  aria-label={`Reproduzir ${videoTitle}`}
+                  className="group absolute inset-0 block w-full transition-transform hover:scale-[1.02]"
+                >
+                  {videoId && (
+                    <img
+                      src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+                      alt={videoTitle}
+                      className="absolute inset-0 h-full w-full object-cover opacity-90"
+                      loading="lazy"
+                    />
+                  )}
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 shadow-lg transition-transform group-hover:scale-110">
+                      <Play className="ml-1 h-6 w-6 fill-white text-white" />
+                    </span>
+                  </span>
+                  <span className="absolute bottom-2 left-2 right-2 text-left text-[10px] text-white/80">
+                    João Pdzin
+                  </span>
+                </button>
+              )}
             </div>
           </div>
-        </a>
+        </div>
 
         {/* Content */}
         <div>
