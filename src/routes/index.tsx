@@ -5,6 +5,7 @@ import profileImg from "@/assets/profile.jpeg";
 import bueiroImg from "@/assets/bueiro.jpg.asset.json";
 import joaoImg from "@/assets/joao.jpg.asset.json";
 import casaBrawlImg from "@/assets/casabrawl.png.asset.json";
+import raydivaImg from "@/assets/raydiva.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -494,6 +495,7 @@ function CasesSection() {
               url: "https://www.youtube.com/watch?v=hcNnRHRuYKk",
               title: "JOGUEI #blockblast NO EVENTO",
               author: "Ray Diva",
+              avatar: raydivaImg.url,
             },
           ]}
           titleNodes={
