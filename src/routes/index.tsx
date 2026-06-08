@@ -495,6 +495,7 @@ function CasesSection() {
               url: "https://www.youtube.com/watch?v=hcNnRHRuYKk",
               title: "JOGUEI #blockblast NO EVENTO",
               author: "Ray Diva",
+              avatar: raydivaImg.url,
             },
           ]}
           titleNodes={
