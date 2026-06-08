@@ -158,7 +158,7 @@ function Index() {
               </div>
               <div className="grid grid-cols-2 gap-6 text-center md:text-right">
                 <div>
-                  <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+7M</p>
+                  <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+11M</p>
                   <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">visualizações geradas</p>
                 </div>
                 <div>
@@ -483,10 +483,18 @@ function CasesSection() {
           accent="var(--primary)"
           accentText="text-primary"
           badge="BLOCK BLAST"
-          videoTitle="EU AMO JOGAR #blockblast"
-          videoUrls={[
-            "https://www.youtube.com/watch?v=rjyJ3vNgt2Y",
-            "https://www.youtube.com/watch?v=hcNnRHRuYKk",
+          videos={[
+            {
+              url: "https://www.youtube.com/watch?v=rjyJ3vNgt2Y",
+              title: "EU AMO JOGAR #blockblast",
+              author: "João Pdzin",
+              avatar: joaoImg.url,
+            },
+            {
+              url: "https://www.youtube.com/watch?v=hcNnRHRuYKk",
+              title: "JOGUEI #blockblast NO EVENTO",
+              author: "Ray Diva",
+            },
           ]}
           titleNodes={
             <>
@@ -505,8 +513,14 @@ function CasesSection() {
           accent={DUOLINGO_GREEN}
           accentText=""
           badge="DUOLINGO"
-          videoTitle="O @duolingobroficial REC..."
-          videoUrls={["https://www.youtube.com/shorts/N8pCV7LtNtw"]}
+          videos={[
+            {
+              url: "https://www.youtube.com/shorts/N8pCV7LtNtw",
+              title: "O @duolingobroficial REC...",
+              author: "João Pdzin",
+              avatar: joaoImg.url,
+            },
+          ]}
           titleNodes={
             <>
               YOUTUBE <span style={{ color: DUOLINGO_GREEN }}>SHORT</span> COM A CORUJA
@@ -534,8 +548,7 @@ function CaseSlide({
   index,
   accent,
   badge,
-  videoTitle,
-  videoUrls,
+  videos,
   titleNodes,
   description,
   metrics,
@@ -544,20 +557,20 @@ function CaseSlide({
   accent: string;
   accentText: string;
   badge: string;
-  videoTitle: string;
-  videoUrls: string[];
+  videos: { url: string; title: string; author: string; avatar?: string }[];
   titleNodes: React.ReactNode;
   description: string;
   metrics: { value: string; label: string; colored: boolean }[];
 }) {
   const [playing, setPlaying] = useState(false);
   const [videoIdx, setVideoIdx] = useState(0);
-  const currentUrl = videoUrls[videoIdx];
+  const current = videos[videoIdx];
+  const currentUrl = current.url;
   const videoId = extractYouTubeId(currentUrl);
-  const hasMultiple = videoUrls.length > 1;
+  const hasMultiple = videos.length > 1;
   const changeVideo = (dir: 1 | -1) => {
     setPlaying(false);
-    setVideoIdx((i) => (i + dir + videoUrls.length) % videoUrls.length);
+    setVideoIdx((i) => (i + dir + videos.length) % videos.length);
   };
   return (
     <div
@@ -589,19 +602,29 @@ function CaseSlide({
                   <ChevronRight className="h-4 w-4" />
                 </button>
                 <span className="absolute bottom-2 left-1/2 z-20 -translate-x-1/2 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-semibold text-white">
-                  {videoIdx + 1} / {videoUrls.length}
+                  {videoIdx + 1} / {videos.length}
                 </span>
               </>
             )}
             <div className="flex items-center gap-2 bg-black px-3 pt-3 pb-2 text-white">
-              <img
-                src={joaoImg.url}
-                alt="João Pdzin"
-                className="h-7 w-7 flex-shrink-0 rounded-full object-cover"
-              />
+              {current.avatar ? (
+                <img
+                  src={current.avatar}
+                  alt={current.author}
+                  className="h-7 w-7 flex-shrink-0 rounded-full object-cover"
+                />
+              ) : (
+                <span
+                  className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white"
+                  style={{ background: accent }}
+                  aria-hidden
+                >
+                  {current.author.charAt(0)}
+                </span>
+              )}
               <div className="min-w-0 flex-1">
-                <p className="truncate text-[12px] font-bold leading-tight">{videoTitle}</p>
-                <p className="truncate text-[10px] leading-tight text-white/70">João Pdzin</p>
+                <p className="truncate text-[12px] font-bold leading-tight">{current.title}</p>
+                <p className="truncate text-[10px] leading-tight text-white/70">{current.author}</p>
               </div>
             </div>
             <div className="relative aspect-[9/16] w-full bg-neutral-900">
@@ -609,7 +632,7 @@ function CaseSlide({
                 <iframe
                   className="absolute inset-0 h-full w-full"
                   src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`}
-                  title={videoTitle}
+                  title={current.title}
                   allow="accelerated-sensors; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />
@@ -617,13 +640,13 @@ function CaseSlide({
                 <button
                   type="button"
                   onClick={() => setPlaying(true)}
-                  aria-label={`Reproduzir ${videoTitle}`}
+                  aria-label={`Reproduzir ${current.title}`}
                   className="group absolute inset-0 block w-full transition-transform hover:scale-[1.02]"
                 >
                   {videoId && (
                     <img
                       src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
-                      alt={videoTitle}
+                      alt={current.title}
                       className="absolute inset-0 h-full w-full object-cover"
                       loading="lazy"
                     />
