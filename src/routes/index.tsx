@@ -306,8 +306,21 @@ function Index() {
             </Card>
           </div>
 
+          <div className="mt-6">
+            <Card>
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h4 className="text-lg font-bold">Entre outros projetos</h4>
+                <span className="text-sm font-semibold text-primary">+12.000 pessoas</span>
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Tropa do Nice, Hub do Ninja, entre outras comunidades em que atuei com gestão,
+                moderação e crescimento.
+              </p>
+            </Card>
+          </div>
+
           <p className="mt-10 text-center text-sm font-medium text-muted-foreground">
-            Administração ativa de mais de 38.000 membros em ecossistemas digitais diversos
+            Administração ativa de mais de 50.000 membros em ecossistemas digitais diversos
           </p>
         </Section>
 
@@ -471,16 +484,19 @@ function CasesSection() {
           accentText="text-primary"
           badge="BLOCK BLAST"
           videoTitle="EU AMO JOGAR #blockblast"
-          videoUrl="https://www.youtube.com/watch?v=rjyJ3vNgt2Y"
+          videoUrls={[
+            "https://www.youtube.com/watch?v=rjyJ3vNgt2Y",
+            "https://www.youtube.com/watch?v=hcNnRHRuYKk",
+          ]}
           titleNodes={
             <>
-              9 VÍDEOS, +7 <span className="text-primary">MILHÕES</span> DE VISUALIZAÇÕES
+              3 INFLUENCERS, +10 <span className="text-primary">MILHÕES</span> DE VISUALIZAÇÕES
             </>
           }
-          description='Campanha de 9 vídeos com integração da marca, somando mais de 7 milhões de visualizações e excelente performance de retenção.'
+          description='Campanha com 3 influencers e integração da marca, somando mais de 10 milhões de visualizações e excelente performance de retenção.'
           metrics={[
-            { value: "9", label: "VÍDEOS", colored: false },
-            { value: "+7M", label: "VISUALIZAÇÕES", colored: false },
+            { value: "3", label: "INFLUENCERS", colored: false },
+            { value: "+10M", label: "VISUALIZAÇÕES", colored: false },
             { value: "Alta", label: "RETENÇÃO", colored: true },
           ]}
         />
@@ -490,7 +506,7 @@ function CasesSection() {
           accentText=""
           badge="DUOLINGO"
           videoTitle="O @duolingobroficial REC..."
-          videoUrl="https://www.youtube.com/shorts/N8pCV7LtNtw"
+          videoUrls={["https://www.youtube.com/shorts/N8pCV7LtNtw"]}
           titleNodes={
             <>
               YOUTUBE <span style={{ color: DUOLINGO_GREEN }}>SHORT</span> COM A CORUJA
