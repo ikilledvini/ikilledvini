@@ -535,7 +535,7 @@ function CaseSlide({
   accent,
   badge,
   videoTitle,
-  videoUrl,
+  videoUrls,
   titleNodes,
   description,
   metrics,
@@ -545,13 +545,20 @@ function CaseSlide({
   accentText: string;
   badge: string;
   videoTitle: string;
-  videoUrl: string;
+  videoUrls: string[];
   titleNodes: React.ReactNode;
   description: string;
   metrics: { value: string; label: string; colored: boolean }[];
 }) {
   const [playing, setPlaying] = useState(false);
-  const videoId = extractYouTubeId(videoUrl);
+  const [videoIdx, setVideoIdx] = useState(0);
+  const currentUrl = videoUrls[videoIdx];
+  const videoId = extractYouTubeId(currentUrl);
+  const hasMultiple = videoUrls.length > 1;
+  const changeVideo = (dir: 1 | -1) => {
+    setPlaying(false);
+    setVideoIdx((i) => (i + dir + videoUrls.length) % videoUrls.length);
+  };
   return (
     <div
       data-case-slide
@@ -562,7 +569,30 @@ function CaseSlide({
       <div className="grid items-center gap-10 rounded-2xl border border-border bg-card p-6 md:grid-cols-2 md:p-10">
         {/* Mockup */}
         <div className="mx-auto block w-full max-w-[280px]">
-          <div className="overflow-hidden rounded-[1.75rem] border-2 border-foreground/80 bg-black shadow-2xl">
+          <div className="relative overflow-hidden rounded-[1.75rem] border-2 border-foreground/80 bg-black shadow-2xl">
+            {hasMultiple && (
+              <>
+                <button
+                  type="button"
+                  aria-label="Vídeo anterior"
+                  onClick={() => changeVideo(-1)}
+                  className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/70 p-2 text-white backdrop-blur transition-opacity hover:bg-black"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Próximo vídeo"
+                  onClick={() => changeVideo(1)}
+                  className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/70 p-2 text-white backdrop-blur transition-opacity hover:bg-black"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+                <span className="absolute bottom-2 left-1/2 z-20 -translate-x-1/2 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-semibold text-white">
+                  {videoIdx + 1} / {videoUrls.length}
+                </span>
+              </>
+            )}
             <div className="flex items-center gap-2 bg-black px-3 pt-3 pb-2 text-white">
               <img
                 src={joaoImg.url}
@@ -639,7 +669,7 @@ function CaseSlide({
           </div>
 
           <a
-            href={videoUrl}
+            href={currentUrl}
             target="_blank"
             rel="noreferrer"
             className="mt-6 inline-block text-sm font-semibold underline-offset-4 hover:underline"
