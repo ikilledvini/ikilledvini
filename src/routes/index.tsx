@@ -118,9 +118,10 @@ const I18N = {
     contactBody: "Estou sempre aberto para discutir novos projetos, oportunidades e parcerias. Entre em contato por qualquer canal abaixo.",
     contactCard: <>Disponível para novos projetos: <span className="text-primary">Consultorias e colaborações digitais</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
-    blockBlastTitle: <>3 INFLUENCERS, +10 <span className="text-primary">MILHÕES</span> DE VISUALIZAÇÕES</>,
-    blockBlastDesc: "Campanha com 3 influencers e integração da marca, somando mais de 10 milhões de visualizações e excelente performance de retenção.",
-    blockBlastMetrics: [
+    influencersTab: "Influenciadores",
+    influencersCaseTitle: <>3 INFLUENCERS, +10 <span className="text-primary">MILHÕES</span> DE VISUALIZAÇÕES</>,
+    influencersCaseDesc: "Campanha com 3 influencers e integração da marca, somando mais de 10 milhões de visualizações e excelente performance de retenção.",
+    influencersCaseMetrics: [
       { value: "3", label: "INFLUENCERS", colored: false },
       { value: "+10M", label: "VISUALIZAÇÕES", colored: false },
       { value: "Alta", label: "RETENÇÃO", colored: true },
@@ -229,9 +230,10 @@ const I18N = {
     contactBody: "I'm always open to discuss new projects, opportunities and partnerships. Reach out through any channel below.",
     contactCard: <>Available for new projects: <span className="text-primary">Consulting and digital collaborations</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
-    blockBlastTitle: <>3 INFLUENCERS, +10 <span className="text-primary">MILLION</span> VIEWS</>,
-    blockBlastDesc: "Campaign with 3 influencers and brand integration, reaching more than 10 million views with excellent retention.",
-    blockBlastMetrics: [
+    influencersTab: "Influencers",
+    influencersCaseTitle: <>3 INFLUENCERS, +10 <span className="text-primary">MILLION</span> VIEWS</>,
+    influencersCaseDesc: "Campaign with 3 influencers and brand integration, reaching more than 10 million views with excellent retention.",
+    influencersCaseMetrics: [
       { value: "3", label: "INFLUENCERS", colored: false },
       { value: "+10M", label: "VIEWS", colored: false },
       { value: "High", label: "RETENTION", colored: true },
