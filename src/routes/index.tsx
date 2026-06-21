@@ -118,9 +118,10 @@ const I18N = {
     contactBody: "Estou sempre aberto para discutir novos projetos, oportunidades e parcerias. Entre em contato por qualquer canal abaixo.",
     contactCard: <>Disponível para novos projetos: <span className="text-primary">Consultorias e colaborações digitais</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
-    blockBlastTitle: <>3 INFLUENCERS, +10 <span className="text-primary">MILHÕES</span> DE VISUALIZAÇÕES</>,
-    blockBlastDesc: "Campanha com 3 influencers e integração da marca, somando mais de 10 milhões de visualizações e excelente performance de retenção.",
-    blockBlastMetrics: [
+    influencersTab: "Influenciadores",
+    influencersCaseTitle: <>3 INFLUENCERS, +10 <span className="text-primary">MILHÕES</span> DE VISUALIZAÇÕES</>,
+    influencersCaseDesc: "Campanha com 3 influencers e integração da marca, somando mais de 10 milhões de visualizações e excelente performance de retenção.",
+    influencersCaseMetrics: [
       { value: "3", label: "INFLUENCERS", colored: false },
       { value: "+10M", label: "VISUALIZAÇÕES", colored: false },
       { value: "Alta", label: "RETENÇÃO", colored: true },
@@ -229,9 +230,10 @@ const I18N = {
     contactBody: "I'm always open to discuss new projects, opportunities and partnerships. Reach out through any channel below.",
     contactCard: <>Available for new projects: <span className="text-primary">Consulting and digital collaborations</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
-    blockBlastTitle: <>3 INFLUENCERS, +10 <span className="text-primary">MILLION</span> VIEWS</>,
-    blockBlastDesc: "Campaign with 3 influencers and brand integration, reaching more than 10 million views with excellent retention.",
-    blockBlastMetrics: [
+    influencersTab: "Influencers",
+    influencersCaseTitle: <>3 INFLUENCERS, +10 <span className="text-primary">MILLION</span> VIEWS</>,
+    influencersCaseDesc: "Campaign with 3 influencers and brand integration, reaching more than 10 million views with excellent retention.",
+    influencersCaseMetrics: [
       { value: "3", label: "INFLUENCERS", colored: false },
       { value: "+10M", label: "VIEWS", colored: false },
       { value: "High", label: "RETENTION", colored: true },
@@ -418,7 +420,7 @@ function Index() {
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-primary">{t.brandsLabel}</p>
                 <div className="mt-5 flex flex-wrap gap-3">
-                  {["Block Blast", "Duolingo"].map((brand) => (
+                  {["Duolingo"].map((brand) => (
                     <span
                       key={brand}
                       className="rounded-full border-2 border-primary bg-background px-5 py-2 text-sm font-bold text-primary"
@@ -670,7 +672,7 @@ function CasesSection({ t }: { t: typeof I18N[Lang] }) {
             border: active === 0 ? "2px solid var(--primary)" : "2px solid var(--border)",
           }}
         >
-          Block Blast
+          {t.influencersTab}
         </button>
         <button
           type="button"
@@ -715,25 +717,25 @@ function CasesSection({ t }: { t: typeof I18N[Lang] }) {
           index={0}
           accent="var(--primary)"
           accentText="text-primary"
-          badge="BLOCK BLAST"
+          badge="INFLUENCERS"
           t={t}
           videos={[
             {
               url: "https://www.youtube.com/watch?v=rjyJ3vNgt2Y",
-              title: "EU AMO JOGAR #blockblast",
+              title: "EU AMO JOGAR",
               author: "João Pdzin",
               avatar: joaoImg.url,
             },
             {
               url: "https://www.youtube.com/watch?v=hcNnRHRuYKk",
-              title: "JOGUEI #blockblast NO EVENTO",
+              title: "JOGUEI NO EVENTO",
               author: "Ray Diva",
               avatar: raydivaImg.url,
             },
           ]}
-          titleNodes={t.blockBlastTitle}
-          description={t.blockBlastDesc}
-          metrics={[...t.blockBlastMetrics]}
+          titleNodes={t.influencersCaseTitle}
+          description={t.influencersCaseDesc}
+          metrics={[...t.influencersCaseMetrics]}
         />
         <CaseSlide
           index={1}
