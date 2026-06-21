@@ -420,7 +420,7 @@ function Index() {
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-primary">{t.brandsLabel}</p>
                 <div className="mt-5 flex flex-wrap gap-3">
-                  {["Block Blast", "Duolingo"].map((brand) => (
+                  {["Duolingo"].map((brand) => (
                     <span
                       key={brand}
                       className="rounded-full border-2 border-primary bg-background px-5 py-2 text-sm font-bold text-primary"
@@ -672,7 +672,7 @@ function CasesSection({ t }: { t: typeof I18N[Lang] }) {
             border: active === 0 ? "2px solid var(--primary)" : "2px solid var(--border)",
           }}
         >
-          Block Blast
+          {t.influencersTab}
         </button>
         <button
           type="button"
@@ -717,25 +717,25 @@ function CasesSection({ t }: { t: typeof I18N[Lang] }) {
           index={0}
           accent="var(--primary)"
           accentText="text-primary"
-          badge="BLOCK BLAST"
+          badge="INFLUENCERS"
           t={t}
           videos={[
             {
               url: "https://www.youtube.com/watch?v=rjyJ3vNgt2Y",
-              title: "EU AMO JOGAR #blockblast",
+              title: "EU AMO JOGAR",
               author: "João Pdzin",
               avatar: joaoImg.url,
             },
             {
               url: "https://www.youtube.com/watch?v=hcNnRHRuYKk",
-              title: "JOGUEI #blockblast NO EVENTO",
+              title: "JOGUEI NO EVENTO",
               author: "Ray Diva",
               avatar: raydivaImg.url,
             },
           ]}
-          titleNodes={t.blockBlastTitle}
-          description={t.blockBlastDesc}
-          metrics={[...t.blockBlastMetrics]}
+          titleNodes={t.influencersCaseTitle}
+          description={t.influencersCaseDesc}
+          metrics={[...t.influencersCaseMetrics]}
         />
         <CaseSlide
           index={1}
