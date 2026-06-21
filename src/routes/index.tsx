@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Mail, Instagram, MessageCircle, Moon, Sun, Play, ChevronLeft, ChevronRight, Languages } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
 import bueiroImg from "@/assets/bueiro.jpg.asset.json";
 import joaoImg from "@/assets/joao.jpg.asset.json";
 import casaBrawlImg from "@/assets/casabrawl.png.asset.json";
-import raydivaImg from "@/assets/raydiva.jpg.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -47,8 +47,6 @@ const I18N = {
     partnershipsLabel: "em parcerias movimentadas",
     casesEyebrow: "| CASES DE SUCESSO",
     casesTitle: <>PARCERIAS <span className="text-primary">REALIZADAS</span></>,
-    prev: "Anterior",
-    next: "Próximo",
     prevVideo: "Vídeo anterior",
     nextVideo: "Próximo vídeo",
     watchYoutube: "Assistir no YouTube →",
@@ -118,14 +116,6 @@ const I18N = {
     contactBody: "Estou sempre aberto para discutir novos projetos, oportunidades e parcerias. Entre em contato por qualquer canal abaixo.",
     contactCard: <>Disponível para novos projetos: <span className="text-primary">Consultorias e colaborações digitais</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
-    influencersTab: "Influenciadores",
-    influencersCaseTitle: <>3 INFLUENCERS, +10 <span className="text-primary">MILHÕES</span> DE VISUALIZAÇÕES</>,
-    influencersCaseDesc: "Campanha com 3 influencers e integração da marca, somando mais de 10 milhões de visualizações e excelente performance de retenção.",
-    influencersCaseMetrics: [
-      { value: "3", label: "INFLUENCERS", colored: false },
-      { value: "+10M", label: "VISUALIZAÇÕES", colored: false },
-      { value: "Alta", label: "RETENÇÃO", colored: true },
-    ],
     duolingoTitleNodes: (green: string) => <>YOUTUBE <span style={{ color: green }}>SHORT</span> COM A CORUJA</>,
     duolingoDesc: "Integração nativa em formato Short, gerando engajamento orgânico com a audiência gamer e reforçando o tom divertido da marca.",
     duolingoMetrics: [
@@ -159,8 +149,6 @@ const I18N = {
     partnershipsLabel: "in partnerships moved",
     casesEyebrow: "| SUCCESS CASES",
     casesTitle: <>PARTNERSHIPS <span className="text-primary">DELIVERED</span></>,
-    prev: "Previous",
-    next: "Next",
     prevVideo: "Previous video",
     nextVideo: "Next video",
     watchYoutube: "Watch on YouTube →",
@@ -230,14 +218,6 @@ const I18N = {
     contactBody: "I'm always open to discuss new projects, opportunities and partnerships. Reach out through any channel below.",
     contactCard: <>Available for new projects: <span className="text-primary">Consulting and digital collaborations</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
-    influencersTab: "Influencers",
-    influencersCaseTitle: <>3 INFLUENCERS, +10 <span className="text-primary">MILLION</span> VIEWS</>,
-    influencersCaseDesc: "Campaign with 3 influencers and brand integration, reaching more than 10 million views with excellent retention.",
-    influencersCaseMetrics: [
-      { value: "3", label: "INFLUENCERS", colored: false },
-      { value: "+10M", label: "VIEWS", colored: false },
-      { value: "High", label: "RETENTION", colored: true },
-    ],
     duolingoTitleNodes: (green: string) => <>YOUTUBE <span style={{ color: green }}>SHORT</span> WITH THE OWL</>,
     duolingoDesc: "Native integration in Short format, generating organic engagement with the gamer audience and reinforcing the brand's fun tone.",
     duolingoMetrics: [
@@ -620,38 +600,6 @@ function TrajectoryBlock({ year, title, body }: { year: string; title: string; b
 const DUOLINGO_GREEN = "#65CC00";
 
 function CasesSection({ t }: { t: typeof I18N[Lang] }) {
-  const scrollerRef = useRef<HTMLDivElement | null>(null);
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
-    const slides = Array.from(scroller.querySelectorAll<HTMLElement>("[data-case-slide]"));
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting && e.intersectionRatio >= 0.6) {
-            const idx = Number((e.target as HTMLElement).dataset.index ?? 0);
-            setActive(idx);
-          }
-        });
-      },
-      { root: scroller, threshold: [0.6] },
-    );
-    slides.forEach((s) => obs.observe(s));
-    return () => obs.disconnect();
-  }, []);
-
-  const goTo = (idx: number) => {
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
-    const slide = scroller.querySelector<HTMLElement>(`[data-case-slide][data-index="${idx}"]`);
-    if (slide) {
-      scroller.scrollTo({ left: slide.offsetLeft - scroller.offsetLeft, behavior: "smooth" });
-      setActive(idx);
-    }
-  };
-
   return (
     <section id="cases" className="fade-in-up scroll-mt-24 border-t border-border py-20">
       <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
@@ -661,102 +609,24 @@ function CasesSection({ t }: { t: typeof I18N[Lang] }) {
         {t.casesTitle}
       </h2>
 
-      <div className="mb-8 flex justify-center gap-3">
-        <button
-          type="button"
-          onClick={() => goTo(0)}
-          className="cursor-pointer rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all"
-          style={{
-            background: active === 0 ? "var(--primary)" : "transparent",
-            color: active === 0 ? "var(--primary-foreground)" : "var(--muted-foreground)",
-            border: active === 0 ? "2px solid var(--primary)" : "2px solid var(--border)",
-          }}
-        >
-          {t.influencersTab}
-        </button>
-        <button
-          type="button"
-          onClick={() => goTo(1)}
-          className="cursor-pointer rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all"
-          style={{
-            background: active === 1 ? DUOLINGO_GREEN : "transparent",
-            color: active === 1 ? "#fff" : "var(--muted-foreground)",
-            border: active === 1 ? `2px solid ${DUOLINGO_GREEN}` : "2px solid var(--border)",
-          }}
-        >
-          Duolingo
-        </button>
-      </div>
-
-      <div className="relative">
-        <button
-          type="button"
-          aria-label={t.prev}
-          onClick={() => goTo(0)}
-          disabled={active === 0}
-          className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-foreground/70 p-2 text-background backdrop-blur transition-opacity hover:bg-foreground disabled:cursor-not-allowed disabled:opacity-30 md:left-4"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <button
-          type="button"
-          aria-label={t.next}
-          onClick={() => goTo(1)}
-          disabled={active === 1}
-          className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-foreground/70 p-2 text-background backdrop-blur transition-opacity hover:bg-foreground disabled:cursor-not-allowed disabled:opacity-30 md:right-4"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-
-        <div
-          ref={scrollerRef}
-          className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth"
-          style={{ scrollSnapType: "x mandatory" }}
-        >
-        <CaseSlide
-          index={0}
-          accent="var(--primary)"
-          accentText="text-primary"
-          badge="INFLUENCERS"
-          t={t}
-          videos={[
-            {
-              url: "https://www.youtube.com/watch?v=rjyJ3vNgt2Y",
-              title: "EU AMO JOGAR",
-              author: "João Pdzin",
-              avatar: joaoImg.url,
-            },
-            {
-              url: "https://www.youtube.com/watch?v=hcNnRHRuYKk",
-              title: "JOGUEI NO EVENTO",
-              author: "Ray Diva",
-              avatar: raydivaImg.url,
-            },
-          ]}
-          titleNodes={t.influencersCaseTitle}
-          description={t.influencersCaseDesc}
-          metrics={[...t.influencersCaseMetrics]}
-        />
-        <CaseSlide
-          index={1}
-          accent={DUOLINGO_GREEN}
-          accentText=""
-          badge="DUOLINGO"
-          t={t}
-          videos={[
-            {
-              url: "https://www.youtube.com/shorts/N8pCV7LtNtw",
-              title: "O @duolingobroficial REC...",
-              author: "João Pdzin",
-              avatar: joaoImg.url,
-            },
-          ]}
-          titleNodes={t.duolingoTitleNodes(DUOLINGO_GREEN)}
-          description={t.duolingoDesc}
-          metrics={[...t.duolingoMetrics]}
-        />
-        </div>
-      </div>
+      <CaseSlide
+        index={0}
+        accent={DUOLINGO_GREEN}
+        accentText=""
+        badge="DUOLINGO"
+        t={t}
+        videos={[
+          {
+            url: "https://www.youtube.com/shorts/N8pCV7LtNtw",
+            title: "O @duolingobroficial REC...",
+            author: "João Pdzin",
+            avatar: joaoImg.url,
+          },
+        ]}
+        titleNodes={t.duolingoTitleNodes(DUOLINGO_GREEN)}
+        description={t.duolingoDesc}
+        metrics={[...t.duolingoMetrics]}
+      />
     </section>
   );
 }
