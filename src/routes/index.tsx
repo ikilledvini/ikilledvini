@@ -5,6 +5,8 @@ import profileImg from "@/assets/profile.jpeg";
 import bueiroImg from "@/assets/bueiro.jpg.asset.json";
 import joaoImg from "@/assets/joao.jpg.asset.json";
 import casaBrawlImg from "@/assets/casabrawl.png.asset.json";
+import gamerbizImg from "@/assets/gamerbiz.jpg.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
@@ -40,7 +42,7 @@ const I18N = {
       communitiesBody:
         "Em 2024, mergulhei de cabeça na gestão de comunidades digitais. Aprendi tanto a construir servidores do zero para influenciadores e empresas, com estrutura, identidade visual e organização, quanto a manter essas comunidades vivas com dinâmicas engajadas, eventos e estratégias que fazem os membros quererem ficar e crescer juntos.",
       managerTitle: "Manager de Influenciadores",
-      managerBody: "Conectei criadores de conteúdo a campanhas pagas com grandes marcas, entregando resultados reais e mensuráveis.",
+      managerBody: "Conectei criadores de conteúdo a campanhas pagas com grandes marcas, entregando resultados reais e mensuráveis. Desde 2026, integro a Gamerbiz intermediando relações e estipulando campanhas entre influenciadores e empresas.",
     },
     brandsLabel: "Marcas que confiaram no trabalho",
     viewsLabel: "visualizações geradas",
@@ -61,6 +63,11 @@ const I18N = {
     exp2Title: "Equipe de Robótica Clusters #16053",
     exp2Role: "Competidor · Design / Outreach",
     exp2Body: "Desenvolvimento de materiais visuais, branding da equipe e comunicação com patrocinadores em ambiente competitivo.",
+    expGamerbizPeriod: "Junho 2026 — Atualmente",
+    expGamerbizTitle: "Gamerbiz",
+    expGamerbizRole: "Analista de Negócios",
+    expGamerbizBody: "Intermediação de relações entre influenciadores e empresas, estipulação de campanhas e negociações que conectam criadores a oportunidades reais de monetização.",
+    expGamerbizCTA: "Ver no Instagram",
     educationTitle: "Formação Acadêmica",
     eduCourse: "Técnico em Desenvolvimento de Sistemas, SENAI",
     eduBody: "Formação técnica completa com foco em tecnologia e desenvolvimento de soluções digitais.",
@@ -142,7 +149,7 @@ const I18N = {
       communitiesBody:
         "In 2024, I dove headfirst into managing digital communities. I learned how to build servers from scratch for influencers and companies — with structure, visual identity and organization — and also how to keep those communities alive through engaging dynamics, events and strategies that make members want to stay and grow together.",
       managerTitle: "Influencer Manager",
-      managerBody: "I connected content creators to paid campaigns with major brands, delivering real and measurable results.",
+      managerBody: "I connected content creators to paid campaigns with major brands, delivering real and measurable results. Since 2026, I've been part of Gamerbiz mediating relationships and setting up campaigns between influencers and companies.",
     },
     brandsLabel: "Brands that trusted my work",
     viewsLabel: "views generated",
@@ -163,6 +170,11 @@ const I18N = {
     exp2Title: "Clusters Robotics Team #16053",
     exp2Role: "Competitor · Design / Outreach",
     exp2Body: "Developed visual materials, team branding and sponsor communications in a competitive environment.",
+    expGamerbizPeriod: "June 2026 — Present",
+    expGamerbizTitle: "Gamerbiz",
+    expGamerbizRole: "Business Analyst",
+    expGamerbizBody: "Mediating relationships between influencers and companies, setting up campaigns and negotiations that connect creators to real monetization opportunities.",
+    expGamerbizCTA: "See on Instagram",
     educationTitle: "Education",
     eduCourse: "Systems Development Technician, SENAI",
     eduBody: "Complete technical education focused on technology and digital solution development.",
@@ -376,7 +388,7 @@ function Index() {
 
         {/* TRAJETÓRIA */}
         <Section id="trajetoria" title={t.trajectoryTitle}>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-4">
             <TrajectoryBlock
               year="2023"
               title={t.traj.roboticsTitle}
@@ -387,11 +399,16 @@ function Index() {
               title={t.traj.communitiesTitle}
               body={t.traj.communitiesBody}
             />
-            <div className="rounded-xl border-2 border-primary bg-primary/5 p-6 md:col-span-1">
-              <p className="text-xs font-bold uppercase tracking-widest text-primary">2025</p>
-              <h3 className="mt-2 text-lg font-bold">{t.traj.managerTitle}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t.traj.managerBody}</p>
-            </div>
+            <TrajectoryBlock
+              year="2025"
+              title={t.traj.managerTitle}
+              body={t.traj.managerBody}
+            />
+            <TrajectoryBlock
+              year="2026"
+              title="Gamerbiz"
+              body={t.expGamerbizBody}
+            />
           </div>
 
           {/* DESTAQUE MANAGER */}
@@ -424,11 +441,34 @@ function Index() {
           </div>
         </Section>
 
-        {/* CASES DE SUCESSO */}
-        <CasesSection t={t} />
-
         {/* EXPERIÊNCIA */}
         <Section id="experiencia" title={t.experienceTitle}>
+          {/* GAMERBIZ DESTAQUE */}
+          <div className="mb-8 overflow-hidden rounded-2xl border-2 border-primary bg-primary/5 p-6 md:p-10">
+            <div className="grid items-start gap-8 md:grid-cols-[auto_1fr]">
+              <img
+                src={gamerbizImg.url}
+                alt="Gamerbiz"
+                className="h-24 w-24 rounded-xl object-cover shadow-lg md:h-32 md:w-32"
+              />
+              <div>
+                <p className="text-sm font-bold text-primary">{t.expGamerbizPeriod}</p>
+                <h3 className="mt-1 text-2xl font-extrabold md:text-3xl">{t.expGamerbizTitle}</h3>
+                <p className="mt-1 text-base font-medium text-muted-foreground">{t.expGamerbizRole}</p>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">{t.expGamerbizBody}</p>
+                <a
+                  href="https://www.instagram.com/gamerbizbr/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+                >
+                  <Instagram className="h-4 w-4" />
+                  {t.expGamerbizCTA}
+                </a>
+              </div>
+            </div>
+          </div>
+
           <h3 className="mb-6 text-lg font-semibold">{t.roboticsSubtitle}</h3>
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
@@ -445,6 +485,9 @@ function Index() {
             </Card>
           </div>
         </Section>
+
+        {/* CASES DE SUCESSO */}
+        <CasesSection t={t} />
 
         {/* FORMAÇÃO */}
         <Section id="formacao" title={t.educationTitle}>
