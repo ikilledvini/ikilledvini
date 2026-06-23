@@ -5,6 +5,8 @@ import profileImg from "@/assets/profile.jpeg";
 import bueiroImg from "@/assets/bueiro.jpg.asset.json";
 import joaoImg from "@/assets/joao.jpg.asset.json";
 import casaBrawlImg from "@/assets/casabrawl.png.asset.json";
+import gamerbizImg from "@/assets/gamerbiz.jpg.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
