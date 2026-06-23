@@ -144,7 +144,7 @@ const I18N = {
       communitiesBody:
         "In 2024, I dove headfirst into managing digital communities. I learned how to build servers from scratch for influencers and companies — with structure, visual identity and organization — and also how to keep those communities alive through engaging dynamics, events and strategies that make members want to stay and grow together.",
       managerTitle: "Influencer Manager",
-      managerBody: "I connected content creators to paid campaigns with major brands, delivering real and measurable results.",
+      managerBody: "I connected content creators to paid campaigns with major brands, delivering real and measurable results. Since 2026, I've been part of Gamerbiz mediating relationships and setting up campaigns between influencers and companies.",
     },
     brandsLabel: "Brands that trusted my work",
     viewsLabel: "views generated",
