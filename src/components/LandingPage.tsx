@@ -1,25 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
+import React, { useEffect, useState } from "react";
 import { Mail, Instagram, MessageCircle, Moon, Sun, Play, ChevronLeft, ChevronRight, Languages } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
 import bueiroImg from "@/assets/bueiro.jpg.asset.json";
 import joaoImg from "@/assets/joao.jpg.asset.json";
 import casaBrawlImg from "@/assets/casabrawl.png.asset.json";
 import gamerbizImg from "@/assets/gamerbiz.jpg.asset.json";
-
-
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Vinicius de Alencar — ikilledvini" },
-      { name: "description", content: "Manager de Influenciadores, Gestor de Comunidades Digitais e Técnico em Desenvolvimento de Sistemas." },
-      { property: "og:title", content: "Vinicius de Alencar — ikilledvini" },
-      { property: "og:description", content: "Portfólio digital — comunidades, influenciadores e tecnologia." },
-    ],
-  }),
-  component: Index,
-});
 
 type Lang = "pt" | "en";
 
