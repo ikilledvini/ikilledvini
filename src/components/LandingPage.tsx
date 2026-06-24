@@ -314,14 +314,14 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
                 {n.label}
               </a>
             ))}
-            <button
-              onClick={toggleLang}
+            <Link
+              to={langTarget}
               aria-label={t.langAria}
               className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors hover:bg-muted"
             >
               <Languages className="h-3.5 w-3.5" />
-              {lang === "pt" ? "EN" : "PT"}
-            </button>
+              {langLabel}
+            </Link>
             <button
               onClick={toggleTheme}
               aria-label={t.themeAria}
