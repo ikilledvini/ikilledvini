@@ -270,13 +270,8 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
     setThemeUserSet(true);
   };
 
-  const toggleLang = () => {
-    setLang((l) => {
-      const next: Lang = l === "pt" ? "en" : "pt";
-      try { localStorage.setItem("lang", next); } catch {}
-      return next;
-    });
-  };
+  const langTarget = lang === "pt" ? "/en" : "/";
+  const langLabel = lang === "pt" ? "EN" : "PT";
 
   const t = I18N[lang];
 
