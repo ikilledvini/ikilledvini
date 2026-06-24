@@ -226,10 +226,10 @@ const I18N = {
   },
 } as const;
 
-function Index() {
+export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
   const [dark, setDark] = useState<boolean>(false);
   const [themeUserSet, setThemeUserSet] = useState<boolean>(false);
-  const [lang, setLang] = useState<Lang>("pt");
+  const [lang, setLang] = useState<Lang>(initialLang);
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
@@ -240,8 +240,6 @@ function Index() {
     } else if (typeof window !== "undefined" && window.matchMedia) {
       setDark(window.matchMedia("(prefers-color-scheme: dark)").matches);
     }
-    const storedLang = typeof window !== "undefined" ? localStorage.getItem("lang") : null;
-    if (storedLang === "pt" || storedLang === "en") setLang(storedLang);
   }, []);
 
   // Follow system changes while user hasn't manually overridden
