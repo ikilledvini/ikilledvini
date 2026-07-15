@@ -695,7 +695,9 @@ function CaseSlide({
               </div>
             </div>
             <div className="relative aspect-[9/16] w-full bg-neutral-900">
-              {playing && videoId ? (
+              {embed ? (
+                <div className="absolute inset-0 h-full w-full">{embed}</div>
+              ) : playing && videoId ? (
                 <iframe
                   className="absolute inset-0 h-full w-full"
                   src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`}
