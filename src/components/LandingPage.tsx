@@ -448,38 +448,11 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
             </div>
           </div>
 
-          <h3 className="mb-6 text-lg font-semibold">{t.roboticsSubtitle}</h3>
-          <div className="grid gap-6 md:grid-cols-2">
-            <Card>
-              <p className="text-sm font-medium text-primary">{t.exp1Conclusion}</p>
-              <h4 className="mt-2 text-xl font-bold">{t.exp1Title}</h4>
-              <p className="mt-1 text-sm text-muted-foreground">{t.exp1Role}</p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.exp1Body}</p>
-            </Card>
-            <Card>
-              <p className="text-sm font-medium text-primary">{t.exp2Conclusion}</p>
-              <h4 className="mt-2 text-xl font-bold">{t.exp2Title}</h4>
-              <p className="mt-1 text-sm text-muted-foreground">{t.exp2Role}</p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.exp2Body}</p>
-            </Card>
-          </div>
         </Section>
 
         {/* CASES DE SUCESSO */}
         <CasesSection t={t} />
 
-        {/* FORMAÇÃO */}
-        <Section id="formacao" title={t.educationTitle}>
-          <Card>
-            <h4 className="text-xl font-bold">{t.eduCourse}</h4>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.eduBody}</p>
-            <ul className="mt-5 grid gap-2 text-sm text-muted-foreground md:grid-cols-2">
-              {t.eduItems.map((item, i) => (
-                <li key={i}>• {item}</li>
-              ))}
-            </ul>
-          </Card>
-        </Section>
 
         {/* COMPETÊNCIAS */}
         <Section id="competencias" title={t.skillsTitle}>
