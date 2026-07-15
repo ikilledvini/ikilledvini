@@ -40,30 +40,11 @@ const I18N = {
     watchYoutube: "Assistir no YouTube →",
     playPrefix: "Reproduzir",
     experienceTitle: <>Experiência <span className="text-primary">Profissional</span></>,
-    roboticsSubtitle: "Robótica e Inovação",
-    exp1Conclusion: "Conclusão: Março/2024",
-    exp1Title: "Equipe de Robótica NEW XP",
-    exp1Role: "Competidor · Design / Marketing",
-    exp1Body: "Campeões regionais. Criação de identidade visual da equipe, materiais de apresentação e comunicação externa. A equipe avançou para a etapa nacional.",
-    exp2Conclusion: "Conclusão: Março/2025",
-    exp2Title: "Equipe de Robótica Clusters #16053",
-    exp2Role: "Competidor · Design / Outreach",
-    exp2Body: "Desenvolvimento de materiais visuais, branding da equipe e comunicação com patrocinadores em ambiente competitivo.",
     expGamerbizPeriod: "Junho 2026 — Atualmente",
     expGamerbizTitle: "Gamerbiz",
     expGamerbizRole: "Analista de Negócios",
     expGamerbizBody: "Intermediação de relações entre influenciadores e empresas, estipulação de campanhas e negociações que conectam criadores a oportunidades reais de monetização.",
     expGamerbizCTA: "Ver no Instagram",
-    educationTitle: "Formação Acadêmica",
-    eduCourse: "Técnico em Desenvolvimento de Sistemas, SENAI",
-    eduBody: "Formação técnica completa com foco em tecnologia e desenvolvimento de soluções digitais.",
-    eduItems: [
-      <><strong className="text-foreground">Banco de Dados:</strong> Modelagem, SQL, MySQL</>,
-      <><strong className="text-foreground">Linguagens:</strong> Python, C, lógica de programação avançada</>,
-      <><strong className="text-foreground">Desenvolvimento Web:</strong> HTML5, CSS3, JavaScript</>,
-      <><strong className="text-foreground">Ferramentas:</strong> Git, automação, APIs</>,
-      <><strong className="text-foreground">Análise e Projeto:</strong> UML, metodologias ágeis</>,
-    ],
     skillsTitle: "Competências Principais",
     skillsSocialTitle: "Social Media & Comunicação",
     skillsSocial: [
@@ -147,30 +128,11 @@ const I18N = {
     watchYoutube: "Watch on YouTube →",
     playPrefix: "Play",
     experienceTitle: <>Professional <span className="text-primary">Experience</span></>,
-    roboticsSubtitle: "Robotics & Innovation",
-    exp1Conclusion: "Completed: March 2024",
-    exp1Title: "NEW XP Robotics Team",
-    exp1Role: "Competitor · Design / Marketing",
-    exp1Body: "Regional champions. Built the team's visual identity, presentation materials and external communications. The team advanced to the national stage.",
-    exp2Conclusion: "Completed: March 2025",
-    exp2Title: "Clusters Robotics Team #16053",
-    exp2Role: "Competitor · Design / Outreach",
-    exp2Body: "Developed visual materials, team branding and sponsor communications in a competitive environment.",
     expGamerbizPeriod: "June 2026 — Present",
     expGamerbizTitle: "Gamerbiz",
     expGamerbizRole: "Business Analyst",
     expGamerbizBody: "Mediating relationships between influencers and companies, setting up campaigns and negotiations that connect creators to real monetization opportunities.",
     expGamerbizCTA: "See on Instagram",
-    educationTitle: "Education",
-    eduCourse: "Systems Development Technician, SENAI",
-    eduBody: "Complete technical education focused on technology and digital solution development.",
-    eduItems: [
-      <><strong className="text-foreground">Databases:</strong> Modeling, SQL, MySQL</>,
-      <><strong className="text-foreground">Languages:</strong> Python, C, advanced programming logic</>,
-      <><strong className="text-foreground">Web Development:</strong> HTML5, CSS3, JavaScript</>,
-      <><strong className="text-foreground">Tools:</strong> Git, automation, APIs</>,
-      <><strong className="text-foreground">Analysis & Design:</strong> UML, agile methodologies</>,
-    ],
     skillsTitle: "Core Competencies",
     skillsSocialTitle: "Social Media & Communication",
     skillsSocial: [
@@ -448,38 +410,11 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
             </div>
           </div>
 
-          <h3 className="mb-6 text-lg font-semibold">{t.roboticsSubtitle}</h3>
-          <div className="grid gap-6 md:grid-cols-2">
-            <Card>
-              <p className="text-sm font-medium text-primary">{t.exp1Conclusion}</p>
-              <h4 className="mt-2 text-xl font-bold">{t.exp1Title}</h4>
-              <p className="mt-1 text-sm text-muted-foreground">{t.exp1Role}</p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.exp1Body}</p>
-            </Card>
-            <Card>
-              <p className="text-sm font-medium text-primary">{t.exp2Conclusion}</p>
-              <h4 className="mt-2 text-xl font-bold">{t.exp2Title}</h4>
-              <p className="mt-1 text-sm text-muted-foreground">{t.exp2Role}</p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.exp2Body}</p>
-            </Card>
-          </div>
         </Section>
 
         {/* CASES DE SUCESSO */}
         <CasesSection t={t} />
 
-        {/* FORMAÇÃO */}
-        <Section id="formacao" title={t.educationTitle}>
-          <Card>
-            <h4 className="text-xl font-bold">{t.eduCourse}</h4>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.eduBody}</p>
-            <ul className="mt-5 grid gap-2 text-sm text-muted-foreground md:grid-cols-2">
-              {t.eduItems.map((item, i) => (
-                <li key={i}>• {item}</li>
-              ))}
-            </ul>
-          </Card>
-        </Section>
 
         {/* COMPETÊNCIAS */}
         <Section id="competencias" title={t.skillsTitle}>
