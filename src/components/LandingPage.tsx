@@ -586,6 +586,17 @@ function CasesSection({ t }: { t: typeof I18N[Lang] }) {
         titleNodes={t.duolingoTitleNodes(DUOLINGO_GREEN)}
         description={t.duolingoDesc}
         metrics={[...t.duolingoMetrics]}
+        embed={
+          <iframe
+            className="h-full w-full"
+            src="https://www.youtube.com/embed/N8pCV7LtNtw?si=hFZzUYOQ1mxt8vnO&controls=0"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        }
       />
     </section>
   );
