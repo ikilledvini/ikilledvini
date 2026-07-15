@@ -729,16 +729,16 @@ function CaseSlide({
           </h3>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">{description}</p>
 
-          <div className="mt-6 grid grid-cols-3 gap-3">
+          <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
             {metrics.map((m) => (
-              <div key={m.label} className="rounded-xl border border-border bg-muted/40 p-4 text-center">
+              <div key={m.label} className="min-w-0 rounded-xl border border-border bg-muted/40 p-3 text-center sm:p-4">
                 <p
-                  className="text-2xl font-extrabold tracking-tight md:text-3xl"
+                  className="truncate text-lg font-extrabold tracking-tight sm:text-2xl md:text-3xl"
                   style={m.colored ? { color: accent } : undefined}
                 >
                   {m.value}
                 </p>
-                <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                <p className="mt-1 truncate text-[9px] font-semibold uppercase tracking-widest text-muted-foreground sm:text-[10px]">
                   {m.label}
                 </p>
               </div>
