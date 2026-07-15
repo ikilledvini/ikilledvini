@@ -91,8 +91,8 @@ const I18N = {
     contactCard: <>Disponível para novos projetos: <span className="text-primary">Consultorias e colaborações digitais</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
     location: "Fortaleza, Ceará",
-    duolingoTitleNodes: (green: string) => <>YOUTUBE <span style={{ color: green }}>SHORT</span> COM A CORUJA</>,
-    duolingoDesc: "Integração nativa em formato Short, gerando engajamento orgânico com a audiência gamer e reforçando o tom divertido da marca.",
+    duolingoTitleNodes: (green: string) => <>YOUTUBE <span style={{ color: green }}>SHORTS</span> COM DUOLINGO</>,
+    duolingoDesc: "Integração nativa em formato short-form, gerando engajamento orgânico com a audiência gamer e reforçando o tom divertido da marca.",
     duolingoMetrics: [
       { value: "1", label: "SHORT", colored: false },
       { value: "Nativo", label: "FORMATO", colored: true },
