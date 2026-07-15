@@ -616,6 +616,7 @@ function CaseSlide({
   description,
   metrics,
   t,
+  embed,
 }: {
   index: number;
   accent: string;
@@ -626,6 +627,7 @@ function CaseSlide({
   description: string;
   metrics: { value: string; label: string; colored: boolean }[];
   t: typeof I18N[Lang];
+  embed?: React.ReactNode;
 }) {
   const [playing, setPlaying] = useState(false);
   const [videoIdx, setVideoIdx] = useState(0);
