@@ -586,6 +586,17 @@ function CasesSection({ t }: { t: typeof I18N[Lang] }) {
         titleNodes={t.duolingoTitleNodes(DUOLINGO_GREEN)}
         description={t.duolingoDesc}
         metrics={[...t.duolingoMetrics]}
+        embed={
+          <iframe
+            className="h-full w-full"
+            src="https://www.youtube.com/embed/N8pCV7LtNtw?si=hFZzUYOQ1mxt8vnO&controls=0"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        }
       />
     </section>
   );
@@ -605,6 +616,7 @@ function CaseSlide({
   description,
   metrics,
   t,
+  embed,
 }: {
   index: number;
   accent: string;
@@ -615,6 +627,7 @@ function CaseSlide({
   description: string;
   metrics: { value: string; label: string; colored: boolean }[];
   t: typeof I18N[Lang];
+  embed?: React.ReactNode;
 }) {
   const [playing, setPlaying] = useState(false);
   const [videoIdx, setVideoIdx] = useState(0);
@@ -682,7 +695,9 @@ function CaseSlide({
               </div>
             </div>
             <div className="relative aspect-[9/16] w-full bg-neutral-900">
-              {playing && videoId ? (
+              {embed ? (
+                <div className="absolute inset-0 h-full w-full">{embed}</div>
+              ) : playing && videoId ? (
                 <iframe
                   className="absolute inset-0 h-full w-full"
                   src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`}
