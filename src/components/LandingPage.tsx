@@ -27,7 +27,7 @@ const I18N = {
       communitiesTitle: "Comunidades Digitais",
       communitiesBody:
         "Em 2024, mergulhei de cabeça na gestão de comunidades digitais. Aprendi tanto a construir servidores do zero para influenciadores e empresas, com estrutura, identidade visual e organização, quanto a manter essas comunidades vivas com dinâmicas engajadas, eventos e estratégias que fazem os membros quererem ficar e crescer juntos.",
-      managerTitle: "Manager de Influenciadores",
+      managerTitle: "Manager Independente\u00a0 de Influenciadores",
       managerBody: "Conectei criadores de conteúdo a campanhas pagas com grandes marcas, entregando resultados reais e mensuráveis. Desde 2026, integro a Gamerbiz intermediando relações e estipulando campanhas entre influenciadores e empresas.",
     },
     brandsLabel: "Marcas que confiaram no trabalho",
