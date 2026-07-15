@@ -180,8 +180,8 @@ const I18N = {
     contactCard: <>Available for new projects: <span className="text-primary">Consulting and digital collaborations</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
     location: "Fortaleza, CE, Brasil",
-    duolingoTitleNodes: (green: string) => <>YOUTUBE <span style={{ color: green }}>SHORT</span> WITH THE OWL</>,
-    duolingoDesc: "Native integration in Short format, generating organic engagement with the gamer audience and reinforcing the brand's fun tone.",
+    duolingoTitleNodes: (green: string) => <>YOUTUBE <span style={{ color: green }}>SHORTS</span> WITH DUOLINGO</>,
+    duolingoDesc: "Native integration in short-form format, generating organic engagement with the gamer audience and reinforcing the brand's fun tone.",
     duolingoMetrics: [
       { value: "1", label: "SHORT", colored: false },
       { value: "Native", label: "FORMAT", colored: true },
