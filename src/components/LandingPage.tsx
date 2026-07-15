@@ -90,6 +90,7 @@ const I18N = {
     contactBody: "Estou sempre aberto para discutir novos projetos, oportunidades e parcerias. Entre em contato por qualquer canal abaixo.",
     contactCard: <>Disponível para novos projetos: <span className="text-primary">Consultorias e colaborações digitais</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
+    location: "Fortaleza, Ceará",
     duolingoTitleNodes: (green: string) => <>YOUTUBE <span style={{ color: green }}>SHORT</span> COM A CORUJA</>,
     duolingoDesc: "Integração nativa em formato Short, gerando engajamento orgânico com a audiência gamer e reforçando o tom divertido da marca.",
     duolingoMetrics: [
@@ -178,6 +179,7 @@ const I18N = {
     contactBody: "I'm always open to discuss new projects, opportunities and partnerships. Reach out through any channel below.",
     contactCard: <>Available for new projects: <span className="text-primary">Consulting and digital collaborations</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
+    location: "Fortaleza, CE, Brasil",
     duolingoTitleNodes: (green: string) => <>YOUTUBE <span style={{ color: green }}>SHORT</span> WITH THE OWL</>,
     duolingoDesc: "Native integration in Short format, generating organic engagement with the gamer audience and reinforcing the brand's fun tone.",
     duolingoMetrics: [
