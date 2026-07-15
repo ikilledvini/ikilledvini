@@ -90,6 +90,7 @@ const I18N = {
     contactBody: "Estou sempre aberto para discutir novos projetos, oportunidades e parcerias. Entre em contato por qualquer canal abaixo.",
     contactCard: <>Disponível para novos projetos: <span className="text-primary">Consultorias e colaborações digitais</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
+    location: "Fortaleza, Ceará",
     duolingoTitleNodes: (green: string) => <>YOUTUBE <span style={{ color: green }}>SHORT</span> COM A CORUJA</>,
     duolingoDesc: "Integração nativa em formato Short, gerando engajamento orgânico com a audiência gamer e reforçando o tom divertido da marca.",
     duolingoMetrics: [
@@ -178,6 +179,7 @@ const I18N = {
     contactBody: "I'm always open to discuss new projects, opportunities and partnerships. Reach out through any channel below.",
     contactCard: <>Available for new projects: <span className="text-primary">Consulting and digital collaborations</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
+    location: "Fortaleza, CE, Brasil",
     duolingoTitleNodes: (green: string) => <>YOUTUBE <span style={{ color: green }}>SHORT</span> WITH THE OWL</>,
     duolingoDesc: "Native integration in Short format, generating organic engagement with the gamer audience and reinforcing the brand's fun tone.",
     duolingoMetrics: [
@@ -307,12 +309,13 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
               Vinicius de <span className="text-primary">Alencar</span>
             </h1>
             <p className="mt-2 text-lg font-medium text-muted-foreground md:text-xl">@ikilledvini</p>
+            <p className="mt-2 text-sm font-medium text-primary">{t.location}</p>
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">{t.role}</p>
             <div className="mt-6 flex items-center justify-center gap-3 md:justify-start">
-              <a href="https://instagram.com/ikilledvini" target="_blank" rel="noreferrer" aria-label="Instagram" className="rounded-full border border-border p-2.5 transition-colors hover:border-primary hover:text-primary">
+              <a href="https://www.instagram.com/vinidealencar/" target="_blank" rel="noreferrer" aria-label="Instagram" className="rounded-full border border-border p-2.5 transition-colors hover:border-primary hover:text-primary">
                 <Instagram className="h-4 w-4" />
               </a>
-              <a href="mailto:ikilledvini@gmail.com" aria-label="Email" className="rounded-full border border-border p-2.5 transition-colors hover:border-primary hover:text-primary">
+              <a href="mailto:vinicius@gamerbiz.com.br" aria-label="Email" className="rounded-full border border-border p-2.5 transition-colors hover:border-primary hover:text-primary">
                 <Mail className="h-4 w-4" />
               </a>
               <a href="https://discord.com/users/ikilledvini" target="_blank" rel="noreferrer" aria-label="Discord" className="rounded-full border border-border p-2.5 transition-colors hover:border-primary hover:text-primary">
@@ -505,7 +508,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
         <Section id="contato" title={t.contactTitle}>
           <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">{t.contactBody}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="mailto:ikilledvini@gmail.com" className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+            <a href="mailto:vinicius@gamerbiz.com.br" className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
               <Mail className="h-4 w-4" /> Email
             </a>
             <a href="https://discord.com/users/ikilledvini" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary">
