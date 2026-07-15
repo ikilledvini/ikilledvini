@@ -309,12 +309,13 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
               Vinicius de <span className="text-primary">Alencar</span>
             </h1>
             <p className="mt-2 text-lg font-medium text-muted-foreground md:text-xl">@ikilledvini</p>
+            <p className="mt-2 text-sm font-medium text-primary">{t.location}</p>
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">{t.role}</p>
             <div className="mt-6 flex items-center justify-center gap-3 md:justify-start">
-              <a href="https://instagram.com/ikilledvini" target="_blank" rel="noreferrer" aria-label="Instagram" className="rounded-full border border-border p-2.5 transition-colors hover:border-primary hover:text-primary">
+              <a href="https://www.instagram.com/vinidealencar/" target="_blank" rel="noreferrer" aria-label="Instagram" className="rounded-full border border-border p-2.5 transition-colors hover:border-primary hover:text-primary">
                 <Instagram className="h-4 w-4" />
               </a>
-              <a href="mailto:ikilledvini@gmail.com" aria-label="Email" className="rounded-full border border-border p-2.5 transition-colors hover:border-primary hover:text-primary">
+              <a href="mailto:vinicius@gamerbiz.com.br" aria-label="Email" className="rounded-full border border-border p-2.5 transition-colors hover:border-primary hover:text-primary">
                 <Mail className="h-4 w-4" />
               </a>
               <a href="https://discord.com/users/ikilledvini" target="_blank" rel="noreferrer" aria-label="Discord" className="rounded-full border border-border p-2.5 transition-colors hover:border-primary hover:text-primary">
@@ -507,7 +508,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
         <Section id="contato" title={t.contactTitle}>
           <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">{t.contactBody}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="mailto:ikilledvini@gmail.com" className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+            <a href="mailto:vinicius@gamerbiz.com.br" className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
               <Mail className="h-4 w-4" /> Email
             </a>
             <a href="https://discord.com/users/ikilledvini" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary">
