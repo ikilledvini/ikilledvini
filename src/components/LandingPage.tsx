@@ -673,27 +673,6 @@ function CaseSlide({
                 </span>
               </>
             )}
-            <div className="flex items-center gap-2 bg-black px-3 pt-3 pb-2 text-white">
-              {current.avatar ? (
-                <img
-                  src={current.avatar}
-                  alt={current.author}
-                  className="h-7 w-7 flex-shrink-0 rounded-full object-cover"
-                />
-              ) : (
-                <span
-                  className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white"
-                  style={{ background: accent }}
-                  aria-hidden
-                >
-                  {current.author.charAt(0)}
-                </span>
-              )}
-              <div className="min-w-0 flex-1">
-                <p className="truncate text-[12px] font-bold leading-tight">{current.title}</p>
-                <p className="truncate text-[10px] leading-tight text-white/70">{current.author}</p>
-              </div>
-            </div>
             <div className="relative aspect-[9/16] w-full bg-neutral-900">
               {embed ? (
                 <div className="absolute inset-0 h-full w-full">{embed}</div>
