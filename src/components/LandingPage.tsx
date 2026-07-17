@@ -6,6 +6,7 @@ import bueiroImg from "@/assets/bueiro.jpg.asset.json";
 import joaoImg from "@/assets/joao.jpg.asset.json";
 import casaBrawlImg from "@/assets/casabrawl.png.asset.json";
 import gamerbizImg from "@/assets/gamerbiz.jpg.asset.json";
+import partnerHubImg from "@/assets/gamerbiz-partner.png.asset.json";
 
 type Lang = "pt" | "en";
 
@@ -65,6 +66,12 @@ const I18N = {
     discordTitle: <>Projetos no <span className="text-primary">Discord</span></>,
     discordIntro: "Comunidades que gerencio ativamente, oferecendo liderança estratégica e operacional.",
     brandsSection: "Soluções para Marcas",
+    partnerHubTitle: "Gamerbiz Partner Hub",
+    partnerHubRole: "Gerente de Operações do Servidor",
+    partnerHubBody:
+      "Solução que integra comunicações entre marcas e influenciadores, conectando oportunidades de campanha em um ecossistema ativo com mais de 50 criadores.",
+    partnerHubCTA: "Entrar no Discord",
+    partnerHubMetric: "+50 influenciadores",
     influencersSection: "Soluções para Influenciadores",
     membersWord: (n: string) => `${n} membros`,
     peopleWord: (n: string) => `${n} pessoas`,
@@ -154,6 +161,12 @@ const I18N = {
     discordTitle: <>Projects on <span className="text-primary">Discord</span></>,
     discordIntro: "Communities I actively manage, providing strategic and operational leadership.",
     brandsSection: "Brand Solutions",
+    partnerHubTitle: "Gamerbiz Partner Hub",
+    partnerHubRole: "Server Operations Manager",
+    partnerHubBody:
+      "A solution that integrates communications between brands and influencers, connecting campaign opportunities in an active ecosystem with more than 50 creators.",
+    partnerHubCTA: "Join Discord",
+    partnerHubMetric: "+50 influencers",
     influencersSection: "Influencer Solutions",
     membersWord: (n: string) => `${n} members`,
     peopleWord: (n: string) => `${n} people`,
@@ -442,7 +455,29 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
           <p className="mb-10 max-w-2xl text-base text-muted-foreground">{t.discordIntro}</p>
 
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">{t.brandsSection}</h3>
-          <div className="mb-10">
+          <div className="mb-10 grid gap-6">
+            <Card>
+              <div className="flex items-start gap-4">
+                <img src={partnerHubImg.url} alt="Gamerbiz Partner Hub" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h4 className="text-xl font-bold">{t.partnerHubTitle}</h4>
+                    <span className="text-sm font-semibold text-primary">{t.partnerHubMetric}</span>
+                  </div>
+                  <p className="mt-1 text-sm text-muted-foreground">{t.partnerHubRole}</p>
+                </div>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.partnerHubBody}</p>
+              <a
+                href="https://discord.gg/pgkQqWc4qY"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-5 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                <MessageCircle className="h-4 w-4" />
+                {t.partnerHubCTA}
+              </a>
+            </Card>
             <Card>
               <div className="flex items-start gap-4">
                 <img src={casaBrawlImg.url} alt="Casa Brawl" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
