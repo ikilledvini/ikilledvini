@@ -69,7 +69,7 @@ const I18N = {
     partnerHubTitle: "Gamerbiz Partner Hub",
     partnerHubRole: "Gerente de Operações do Servidor",
     partnerHubBody:
-      "Solução que integra comunicações entre marcas e influenciadores, conectando oportunidades de campanha em um ecossistema ativo com mais de 50 criadores.",
+      "Sistema de gestão para comunidades de influenciadores, desenvolvido para facilitar a comunicação entre marcas e creators, organizar campanhas e acompanhar oportunidades de colaboração em um único ambiente.",
     partnerHubCTA: "Entrar no Discord",
     partnerHubMetric: "+50 influenciadores",
     influencersSection: "Soluções para Influenciadores",
@@ -164,7 +164,7 @@ const I18N = {
     partnerHubTitle: "Gamerbiz Partner Hub",
     partnerHubRole: "Server Operations Manager",
     partnerHubBody:
-      "A solution that integrates communications between brands and influencers, connecting campaign opportunities in an active ecosystem with more than 50 creators.",
+      "Management system for influencer communities, developed to facilitate communication between brands and creators, organize campaigns and track collaboration opportunities in a single environment.",
     partnerHubCTA: "Join Discord",
     partnerHubMetric: "+50 influencers",
     influencersSection: "Influencer Solutions",
