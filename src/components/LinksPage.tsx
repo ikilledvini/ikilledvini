@@ -18,7 +18,7 @@ const socialLinks = [
   },
   {
     label: "Discord",
-    detail: "1174398514772594698",
+    detail: "@ikilledvini",
     href: "https://discord.com/users/1174398514772594698",
     icon: MessageCircle,
   },
