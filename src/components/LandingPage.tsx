@@ -32,6 +32,7 @@ const I18N = {
       managerBody: "Conectei criadores de conteúdo a campanhas pagas com grandes marcas, entregando resultados reais e mensuráveis. Desde 2026, integro a Gamerbiz intermediando relações e estipulando campanhas entre influenciadores e empresas.",
     },
     brandsLabel: "Marcas que confiaram no trabalho",
+    trustedBrands: ["Duolingo", "Havit", "Fifine", "e mais"],
     viewsLabel: "visualizações geradas",
     partnershipsLabel: "em parcerias movimentadas",
     casesEyebrow: "| CASES DE SUCESSO",
@@ -127,6 +128,7 @@ const I18N = {
       managerBody: "I connected content creators to paid campaigns with major brands, delivering real and measurable results. Since 2026, I've been part of Gamerbiz mediating relationships and setting up campaigns between influencers and companies.",
     },
     brandsLabel: "Brands that trusted my work",
+    trustedBrands: ["Duolingo", "Havit", "Fifine", "and more"],
     viewsLabel: "views generated",
     partnershipsLabel: "in partnerships moved",
     casesEyebrow: "| SUCCESS CASES",
@@ -374,7 +376,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-primary">{t.brandsLabel}</p>
                 <div className="mt-5 flex flex-wrap gap-3">
-                  {["Duolingo"].map((brand) => (
+                  {t.trustedBrands.map((brand) => (
                     <span
                       key={brand}
                       className="rounded-full border-2 border-primary bg-background px-5 py-2 text-sm font-bold text-primary"
@@ -386,11 +388,11 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
               </div>
               <div className="grid grid-cols-2 gap-6 text-center md:text-right">
                 <div>
-                  <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+11M</p>
+                  <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+15M</p>
                   <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t.viewsLabel}</p>
                 </div>
                 <div>
-                  <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+R$20K</p>
+                  <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+R$30K</p>
                   <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t.partnershipsLabel}</p>
                 </div>
               </div>
