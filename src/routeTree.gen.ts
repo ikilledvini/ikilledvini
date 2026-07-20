@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WebdesignRouteImport } from './routes/webdesign'
 import { Route as SocialmediaRouteImport } from './routes/socialmedia'
+import { Route as LinksRouteImport } from './routes/links'
 import { Route as EnRouteImport } from './routes/en'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EnWebdesignRouteImport } from './routes/en_.webdesign'
@@ -24,6 +25,11 @@ const WebdesignRoute = WebdesignRouteImport.update({
 const SocialmediaRoute = SocialmediaRouteImport.update({
   id: '/socialmedia',
   path: '/socialmedia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LinksRoute = LinksRouteImport.update({
+  id: '/links',
+  path: '/links',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnRoute = EnRouteImport.update({
@@ -50,6 +56,7 @@ const EnSocialmediaRoute = EnSocialmediaRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/en': typeof EnRoute
+  '/links': typeof LinksRoute
   '/socialmedia': typeof SocialmediaRoute
   '/webdesign': typeof WebdesignRoute
   '/en/socialmedia': typeof EnSocialmediaRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/en': typeof EnRoute
+  '/links': typeof LinksRoute
   '/socialmedia': typeof SocialmediaRoute
   '/webdesign': typeof WebdesignRoute
   '/en/socialmedia': typeof EnSocialmediaRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/en': typeof EnRoute
+  '/links': typeof LinksRoute
   '/socialmedia': typeof SocialmediaRoute
   '/webdesign': typeof WebdesignRoute
   '/en_/socialmedia': typeof EnSocialmediaRoute
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/en'
+    | '/links'
     | '/socialmedia'
     | '/webdesign'
     | '/en/socialmedia'
@@ -85,6 +95,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/en'
+    | '/links'
     | '/socialmedia'
     | '/webdesign'
     | '/en/socialmedia'
@@ -93,6 +104,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/en'
+    | '/links'
     | '/socialmedia'
     | '/webdesign'
     | '/en_/socialmedia'
@@ -102,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EnRoute: typeof EnRoute
+  LinksRoute: typeof LinksRoute
   SocialmediaRoute: typeof SocialmediaRoute
   WebdesignRoute: typeof WebdesignRoute
   EnSocialmediaRoute: typeof EnSocialmediaRoute
@@ -122,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/socialmedia'
       fullPath: '/socialmedia'
       preLoaderRoute: typeof SocialmediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/links': {
+      id: '/links'
+      path: '/links'
+      fullPath: '/links'
+      preLoaderRoute: typeof LinksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/en': {
@@ -158,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EnRoute: EnRoute,
+  LinksRoute: LinksRoute,
   SocialmediaRoute: SocialmediaRoute,
   WebdesignRoute: WebdesignRoute,
   EnSocialmediaRoute: EnSocialmediaRoute,
