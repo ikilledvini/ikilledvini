@@ -96,6 +96,7 @@ const I18N = {
     discordTotal: "Administração ativa de mais de 50.000 membros em ecossistemas digitais diversos",
     contactTitle: <>Vamos <span className="text-primary">Conversar?</span></>,
     contactBody: "Estou sempre aberto para discutir novos projetos, oportunidades e parcerias. Entre em contato por qualquer canal abaixo.",
+    linksButton: "Ver links e redes",
     contactCard: <>Disponível para novos projetos: <span className="text-primary">Consultorias e colaborações digitais</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
     location: "Fortaleza, Ceará",
@@ -192,6 +193,7 @@ const I18N = {
     discordTotal: "Active management of more than 50,000 members across diverse digital ecosystems",
     contactTitle: <>Let's <span className="text-primary">Talk?</span></>,
     contactBody: "I'm always open to discuss new projects, opportunities and partnerships. Reach out through any channel below.",
+    linksButton: "View links and socials",
     contactCard: <>Available for new projects: <span className="text-primary">Consulting and digital collaborations</span></>,
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
     location: "Fortaleza, CE, Brasil",
@@ -250,6 +252,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
   };
 
   const langTarget = lang === "pt" ? "/en/socialmedia" : "/socialmedia";
+  const linksTarget = lang === "pt" ? "/links" : "/en/links";
   const langLabel = lang === "pt" ? "EN" : "PT";
 
   const t = I18N[lang];
@@ -559,6 +562,9 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
             <a href="https://discord.com/users/ikilledvini" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary">
               <MessageCircle className="h-4 w-4" /> Discord
             </a>
+            <Link to={linksTarget} className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-5 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary">
+              {t.linksButton} <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </div>
           <div className="mt-8 rounded-xl border border-primary/30 bg-background/50 p-5 text-center">
             <p className="text-sm font-semibold md:text-base">{t.contactCard}</p>

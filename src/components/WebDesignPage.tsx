@@ -111,6 +111,7 @@ const copy = {
     contactTitle: <>Vamos construir algo <span className="text-primary">juntos?</span></>,
     contactBody: "Estou disponível para novos sites, interfaces, media kits e projetos digitais.",
     contact: "Falar comigo",
+    linksButton: "Ver links e redes",
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
   },
   en: {
@@ -167,6 +168,7 @@ const copy = {
     contactTitle: <>Let's build something <span className="text-primary">together?</span></>,
     contactBody: "I'm available for new websites, interfaces, media kits and digital projects.",
     contact: "Get in touch",
+    linksButton: "View links and socials",
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
   },
 } as const;
@@ -175,6 +177,7 @@ export function WebDesignPage({ lang }: { lang: Lang }) {
   const t = copy[lang];
   const home = lang === "en" ? "/en" : "/";
   const languageTarget = lang === "en" ? "/webdesign" : "/en/webdesign";
+  const linksTarget = lang === "en" ? "/en/links" : "/links";
   const [dark, setDark] = useState(false);
   const [themeUserSet, setThemeUserSet] = useState(false);
 
@@ -336,9 +339,14 @@ export function WebDesignPage({ lang }: { lang: Lang }) {
         <Section id="contato" title={t.contactTitle}>
           <div className="rounded-2xl border border-primary bg-primary/5 p-8 text-center md:p-12">
             <p className="mx-auto max-w-2xl text-muted-foreground">{t.contactBody}</p>
-            <a href="mailto:vinicius@gamerbiz.com.br" className="mt-7 inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
-              <Mail className="h-4 w-4" /> {t.contact}
-            </a>
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
+              <a href="mailto:vinicius@gamerbiz.com.br" className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+                <Mail className="h-4 w-4" /> {t.contact}
+              </a>
+              <Link to={linksTarget} className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-6 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary">
+                {t.linksButton} <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </Section>
       </main>
