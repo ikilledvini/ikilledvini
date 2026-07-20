@@ -1,30 +1,160 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, Languages, Mail, MonitorSmartphone } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  Bot,
+  BriefcaseBusiness,
+  Code2,
+  Database,
+  GraduationCap,
+  Languages,
+  Layout,
+  Mail,
+  Server,
+  Smartphone,
+  Trophy,
+} from "lucide-react";
 import { useEffect } from "react";
 import profileImg from "@/assets/profile.jpeg";
+import roboticsImg from "@/assets/robotics-award.jpg";
 
 type Lang = "pt" | "en";
+
+const projects = [
+  {
+    title: "JoãoPdzin — Media Kit",
+    url: "https://joaopdzin.vercel.app/",
+    type: { pt: "Projeto real · em evolução", en: "Live project · continuously evolving" },
+    description: {
+      pt: "Portfólio e media kit desenvolvido para JoãoPdzin, um dos criadores mais influentes do nicho de Roblox no Brasil. O site reúne audiência, formatos comerciais, estatísticas e cases para conectar o creator a grandes marcas — incluindo colaborações com Duolingo e Havit.",
+      en: "Portfolio and media kit developed for JoãoPdzin, one of Brazil's most influential Roblox creators. The website brings together audience data, commercial formats, statistics and case studies to connect the creator with major brands — including collaborations with Duolingo and Havit.",
+    },
+    tags: ["Media Kit", "Creator Economy", "Responsive UI"],
+  },
+  {
+    title: "Roxo Nativo",
+    url: "https://roxo-nativo-flow.vercel.app/",
+    type: { pt: "Projeto conceitual", en: "Concept project" },
+    description: {
+      pt: "Landing page fictícia para uma açaiteria, criada para explorar identidade visual, apresentação de produtos e uma jornada de compra simples. O projeto valoriza cores marcantes, navegação responsiva e chamadas claras para o pedido online.",
+      en: "A fictional landing page for an açaí shop, created to explore visual identity, product presentation and a simple purchase journey. The project combines bold colors, responsive navigation and clear online-order calls to action.",
+    },
+    tags: ["Landing Page", "Food Business", "UI Design"],
+  },
+  {
+    title: "PetCare+",
+    url: "https://petcare-plus-digital-care.vercel.app/",
+    type: { pt: "Projeto conceitual", en: "Concept project" },
+    description: {
+      pt: "Site institucional fictício para uma clínica veterinária, pensado para transmitir confiança e acolhimento. A experiência organiza serviços, equipe, informações da clínica e agendamento em uma navegação clara e acessível.",
+      en: "A fictional institutional website for a veterinary clinic, designed to communicate trust and warmth. The experience organizes services, staff, clinic information and appointment scheduling into clear, accessible navigation.",
+    },
+    tags: ["Institutional", "Healthcare", "UX Writing"],
+  },
+] as const;
 
 const copy = {
   pt: {
     back: "Início",
     language: "Mudar para inglês",
+    nav: [
+      ["trajetoria", "Trajetória"],
+      ["projetos", "Projetos"],
+      ["formacao", "Formação"],
+      ["competencias", "Competências"],
+      ["contato", "Contato"],
+    ],
     greeting: "Olá, eu sou",
-    role: "Web Designer · Desenvolvedor de experiências digitais",
-    eyebrow: "Portfólio de Webdesign",
-    title: <>Projetos em <span className="text-primary">construção</span></>,
-    body: "Esta nova área já está pronta para receber meus projetos de interfaces, sites e experiências digitais. Em breve, cada trabalho será apresentado com contexto, processo e resultado.",
+    location: "Fortaleza, CE, Brasil",
+    role: "Web Designer · Desenvolvedor de Sistemas · Criador de Experiências Digitais",
+    intro: "Transformo ideias em interfaces claras, responsivas e preparadas para gerar conexões reais entre pessoas, creators e marcas.",
+    trajectoryTitle: <>Minha <span className="text-primary">Trajetória</span></>,
+    trajectoryIntro: "Uma trajetória construída entre criatividade, tecnologia e comunidades digitais.",
+    roboticsTitle: "Robótica",
+    roboticsPeriod: "2022 · O primeiro grande projeto",
+    roboticsBody: "Aos 14 anos, minha equipe foi campeã do Torneio Regional SESI de Robótica e se classificou para a etapa nacional em Brasília. Durante a competição, atuei em frentes que uniam design, social media e webdesign, aprendendo a transformar ideias técnicas em experiências e apresentações capazes de conectar pessoas.",
+    communityTitle: "Comunidades digitais",
+    communityPeriod: "2024 · Estrutura e automação",
+    communityBody: "Passei a construir a estrutura técnica de servidores no Discord, incluindo organização de canais, integrações com webhooks e bots. Também desenvolvi códigos de bots para necessidades específicas, criando fluxos mais eficientes para moderação, atendimento e gestão de comunidades.",
+    creatorTitle: "Creators e media kits",
+    creatorPeriod: "2025 · Design com resultado",
+    creatorBody: "Desenvolvi o portfólio e media kit de JoãoPdzin, reunindo alcance, audiência e formatos comerciais em uma experiência voltada a marcas. O projeto segue sendo atualizado e apoiou a apresentação do creator em colaborações com Duolingo e Havit.",
+    gamerbizTitle: "GamerBiz",
+    gamerbizPeriod: "2026 · Produtos para creators",
+    gamerbizBody: "Estruturei o servidor da agência no Discord e passei a auxiliar no desenvolvimento de uma plataforma web de media kits para influenciadores, com informações atualizadas e integração planejada ao site da GamerBiz.",
+    projectsEyebrow: "Projetos selecionados",
+    projectsTitle: <>Sites que unem <span className="text-primary">forma e função</span></>,
+    projectsIntro: "Projetos reais e conceituais desenvolvidos para diferentes públicos e objetivos.",
+    viewProject: "Visitar projeto",
+    educationEyebrow: "Formação acadêmica",
+    educationTitle: "Técnico em Desenvolvimento de Sistemas",
+    educationSchool: "SENAI · Janeiro de 2024 — Novembro de 2026",
+    educationBody: "Formação técnica voltada ao ciclo completo de desenvolvimento de software: levantamento de requisitos, prototipação, lógica de programação, bancos de dados, desenvolvimento web, APIs, testes, versionamento e práticas de trabalho em equipe.",
+    experienceTitle: <>Experiência <span className="text-primary">Profissional</span></>,
+    experiencePeriod: "Junho de 2026 — Atualmente",
+    experienceRole: "Analista de Negócios · GamerBiz",
+    experienceBody: "Auxílio no desenvolvimento de uma plataforma digital integrada de media kits para os influenciadores da agência, planejada para reunir e atualizar automaticamente informações estratégicas. Também fui responsável pela estruturação técnica do Discord da GamerBiz, conectando processos, creators e oportunidades comerciais.",
+    skillsTitle: <>Competências <span className="text-primary">Principais</span></>,
+    skillGroups: [
+      { title: "Web & Interface", icon: Layout, items: ["HTML, CSS e JavaScript", "Interfaces responsivas", "Prototipação e UI design", "Acessibilidade e experiência do usuário"] },
+      { title: "Desenvolvimento", icon: Code2, items: ["Lógica de programação", "APIs e integrações", "Git e versionamento", "Testes e documentação"] },
+      { title: "Dados & Sistemas", icon: Database, items: ["Modelagem de dados", "Bancos de dados relacionais", "Análise de requisitos", "Arquitetura de sistemas"] },
+      { title: "Automação & Comunidades", icon: Bot, items: ["Bots para Discord", "Webhooks e automações", "Estruturação de servidores", "Soluções para creators"] },
+    ],
+    contactTitle: <>Vamos construir algo <span className="text-primary">juntos?</span></>,
+    contactBody: "Estou disponível para novos sites, interfaces, media kits e projetos digitais.",
     contact: "Falar comigo",
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
   },
   en: {
     back: "Home",
     language: "Switch to Portuguese",
+    nav: [
+      ["trajetoria", "Journey"],
+      ["projetos", "Projects"],
+      ["formacao", "Education"],
+      ["competencias", "Skills"],
+      ["contato", "Contact"],
+    ],
     greeting: "Hi, I'm",
-    role: "Web Designer · Digital Experience Developer",
-    eyebrow: "Web Design Portfolio",
-    title: <>Projects in <span className="text-primary">progress</span></>,
-    body: "This new area is ready to showcase my interface, website and digital experience projects. Soon, each project will be presented with its context, process and results.",
+    location: "Fortaleza, CE, Brazil",
+    role: "Web Designer · Systems Developer · Digital Experience Creator",
+    intro: "I turn ideas into clear, responsive interfaces designed to create real connections between people, creators and brands.",
+    trajectoryTitle: <>My <span className="text-primary">Journey</span></>,
+    trajectoryIntro: "A journey built at the intersection of creativity, technology and digital communities.",
+    roboticsTitle: "Robotics",
+    roboticsPeriod: "2022 · The first major project",
+    roboticsBody: "At 14, my team won the SESI Regional Robotics Tournament and qualified for the national stage in Brasília. During the competition, I worked across design, social media and web design, learning to turn technical ideas into experiences and presentations that connect people.",
+    communityTitle: "Digital communities",
+    communityPeriod: "2024 · Structure and automation",
+    communityBody: "I began building the technical structure of Discord servers, including channel organization and integrations with webhooks and bots. I also developed custom bot code for specific needs, creating more efficient moderation, support and community-management flows.",
+    creatorTitle: "Creators and media kits",
+    creatorPeriod: "2025 · Design with results",
+    creatorBody: "I developed JoãoPdzin's portfolio and media kit, bringing reach, audience data and commercial formats into a brand-focused experience. The project continues to evolve and supported the creator's presentation for collaborations with Duolingo and Havit.",
+    gamerbizTitle: "GamerBiz",
+    gamerbizPeriod: "2026 · Products for creators",
+    gamerbizBody: "I structured the agency's Discord server and began supporting the development of a web-based media-kit platform for influencers, with updated information and a planned integration into the GamerBiz website.",
+    projectsEyebrow: "Selected projects",
+    projectsTitle: <>Websites where <span className="text-primary">form meets function</span></>,
+    projectsIntro: "Live and conceptual projects designed for different audiences and goals.",
+    viewProject: "View project",
+    educationEyebrow: "Education",
+    educationTitle: "Systems Development Technician",
+    educationSchool: "SENAI · January 2024 — November 2026",
+    educationBody: "Technical training covering the full software development cycle: requirements analysis, prototyping, programming logic, databases, web development, APIs, testing, version control and collaborative practices.",
+    experienceTitle: <>Professional <span className="text-primary">Experience</span></>,
+    experiencePeriod: "June 2026 — Present",
+    experienceRole: "Business Analyst · GamerBiz",
+    experienceBody: "Supporting the development of an integrated digital media-kit platform for the agency's influencers, designed to centralize and automatically update strategic information. I was also responsible for the technical structure of GamerBiz's Discord, connecting processes, creators and commercial opportunities.",
+    skillsTitle: <>Core <span className="text-primary">Skills</span></>,
+    skillGroups: [
+      { title: "Web & Interface", icon: Layout, items: ["HTML, CSS and JavaScript", "Responsive interfaces", "Prototyping and UI design", "Accessibility and user experience"] },
+      { title: "Development", icon: Code2, items: ["Programming logic", "APIs and integrations", "Git and version control", "Testing and documentation"] },
+      { title: "Data & Systems", icon: Database, items: ["Data modeling", "Relational databases", "Requirements analysis", "Systems architecture"] },
+      { title: "Automation & Communities", icon: Bot, items: ["Discord bots", "Webhooks and automation", "Server architecture", "Solutions for creators"] },
+    ],
+    contactTitle: <>Let's build something <span className="text-primary">together?</span></>,
+    contactBody: "I'm available for new websites, interfaces, media kits and digital projects.",
     contact: "Get in touch",
     footer: "© 2026 ikilledvini (Vinicius de Alencar).",
   },
@@ -41,48 +171,129 @@ export function WebDesignPage({ lang }: { lang: Lang }) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-border bg-background/90 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link to={home} className="inline-flex items-center gap-2 text-sm font-bold hover:text-primary">
+          <Link to={home} className="inline-flex items-center gap-2 text-sm font-bold transition-colors hover:text-primary">
             <ArrowLeft className="h-4 w-4" /> {t.back}
           </Link>
-          <Link to={languageTarget} aria-label={t.language} className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs font-bold uppercase tracking-wider hover:border-primary">
-            <Languages className="h-3.5 w-3.5" /> {lang === "pt" ? "EN" : "PT"}
-          </Link>
+          <div className="flex items-center gap-5">
+            {t.nav.map(([id, label]) => (
+              <a key={id} href={`#${id}`} className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground lg:block">{label}</a>
+            ))}
+            <Link to={languageTarget} aria-label={t.language} className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs font-bold uppercase tracking-wider hover:border-primary">
+              <Languages className="h-3.5 w-3.5" /> {lang === "pt" ? "EN" : "PT"}
+            </Link>
+          </div>
         </nav>
       </header>
 
       <main className="mx-auto max-w-6xl px-6">
-        <section className="grid items-center gap-12 py-20 md:grid-cols-[auto_1fr] md:gap-16">
-          <div className="mx-auto h-40 w-40 overflow-hidden rounded-full border-4 border-primary md:h-56 md:w-56">
+        <section className="grid items-center gap-12 py-20 md:grid-cols-[auto_1fr] md:gap-16 md:py-28">
+          <div className="mx-auto h-44 w-44 overflow-hidden rounded-full border-4 border-primary shadow-[0_0_60px_rgba(160,110,255,0.18)] md:h-60 md:w-60">
             <img src={profileImg} alt="Vinicius de Alencar" className="h-full w-full object-cover" />
           </div>
           <div className="text-center md:text-left">
-            <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">{t.greeting}</p>
+            <p className="text-sm font-medium uppercase tracking-[0.22em] text-muted-foreground">{t.greeting}</p>
             <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">Vinicius de <span className="text-primary">Alencar</span></h1>
-            <p className="mt-3 text-lg text-muted-foreground">@ikilledvini</p>
-            <p className="mt-5 text-sm leading-relaxed text-muted-foreground md:text-base">{t.role}</p>
+            <p className="mt-3 text-lg font-medium text-muted-foreground">@ikilledvini</p>
+            <p className="mt-2 text-sm font-semibold text-primary">{t.location}</p>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">{t.role}</p>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">{t.intro}</p>
           </div>
         </section>
 
-        <section className="border-t border-border py-20">
-          <div className="grid gap-10 md:grid-cols-[1fr_1.2fr] md:items-center">
-            <div className="flex aspect-video items-center justify-center rounded-2xl border border-primary/30 bg-primary/5">
-              <MonitorSmartphone className="h-20 w-20 text-primary/70" strokeWidth={1.2} />
+        <Section id="trajetoria" title={t.trajectoryTitle} intro={t.trajectoryIntro}>
+          <article className="overflow-hidden rounded-2xl border border-border bg-card">
+            <img src={roboticsImg} alt={t.roboticsTitle} className="aspect-[16/7] w-full object-cover" />
+            <div className="p-6 md:p-9">
+              <div className="flex items-start gap-4">
+                <IconBox><Trophy className="h-5 w-5" /></IconBox>
+                <div><p className="text-xs font-bold uppercase tracking-widest text-primary">{t.roboticsPeriod}</p><h3 className="mt-2 text-2xl font-bold">{t.roboticsTitle}</h3></div>
+              </div>
+              <p className="mt-5 max-w-4xl leading-relaxed text-muted-foreground">{t.roboticsBody}</p>
             </div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-primary">{t.eyebrow}</p>
-              <h2 className="mt-4 text-3xl font-extrabold tracking-tight md:text-5xl">{t.title}</h2>
-              <p className="mt-6 max-w-xl leading-relaxed text-muted-foreground">{t.body}</p>
-              <a href="mailto:vinicius@gamerbiz.com.br" className="mt-8 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
-                <Mail className="h-4 w-4" /> {t.contact}
-              </a>
+          </article>
+
+          <div className="mt-6 grid gap-6 md:grid-cols-3">
+            <JourneyCard icon={<Server className="h-5 w-5" />} period={t.communityPeriod} title={t.communityTitle} body={t.communityBody} />
+            <JourneyCard icon={<Smartphone className="h-5 w-5" />} period={t.creatorPeriod} title={t.creatorTitle} body={t.creatorBody} />
+            <JourneyCard icon={<BriefcaseBusiness className="h-5 w-5" />} period={t.gamerbizPeriod} title={t.gamerbizTitle} body={t.gamerbizBody} />
+          </div>
+        </Section>
+
+        <Section id="projetos" title={t.projectsTitle} intro={t.projectsIntro} eyebrow={t.projectsEyebrow}>
+          <div className="space-y-8">
+            {projects.map((project, index) => (
+              <article key={project.url} className="grid overflow-hidden rounded-2xl border border-border bg-card md:grid-cols-[1.15fr_1fr]">
+                <div className={`relative min-h-72 overflow-hidden bg-muted ${index % 2 ? "md:order-2" : ""}`}>
+                  <iframe src={project.url} title={`${project.title} preview`} loading="lazy" tabIndex={-1} className="pointer-events-none absolute left-0 top-0 h-[768px] w-[1366px] origin-top-left scale-[0.48] sm:scale-[0.58] md:scale-[0.48]" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+                </div>
+                <div className="flex flex-col justify-center p-7 md:p-10">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{project.type[lang]}</p>
+                  <h3 className="mt-3 text-2xl font-extrabold md:text-3xl">{project.title}</h3>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">{project.description[lang]}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => <span key={tag} className="rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground">{tag}</span>)}
+                  </div>
+                  <a href={project.url} target="_blank" rel="noreferrer" className="mt-7 inline-flex w-fit items-center gap-2 text-sm font-bold text-primary hover:underline">
+                    {t.viewProject} <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="formacao" title={t.educationTitle} eyebrow={t.educationEyebrow}>
+          <div className="rounded-2xl border border-primary/30 bg-primary/5 p-7 md:p-10">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+              <IconBox><GraduationCap className="h-6 w-6" /></IconBox>
+              <div><p className="font-bold text-primary">{t.educationSchool}</p><p className="mt-4 max-w-4xl leading-relaxed text-muted-foreground">{t.educationBody}</p></div>
             </div>
           </div>
-        </section>
+        </Section>
+
+        <Section title={t.experienceTitle}>
+          <div className="rounded-2xl border border-border bg-card p-7 md:p-10">
+            <p className="text-xs font-bold uppercase tracking-widest text-primary">{t.experiencePeriod}</p>
+            <h3 className="mt-3 text-2xl font-bold">{t.experienceRole}</h3>
+            <p className="mt-5 max-w-4xl leading-relaxed text-muted-foreground">{t.experienceBody}</p>
+          </div>
+        </Section>
+
+        <Section id="competencias" title={t.skillsTitle}>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {t.skillGroups.map((group) => {
+              const Icon = group.icon;
+              return <div key={group.title} className="rounded-2xl border border-border bg-card p-6 md:p-7"><div className="flex items-center gap-3"><IconBox><Icon className="h-5 w-5" /></IconBox><h3 className="text-lg font-bold">{group.title}</h3></div><ul className="mt-5 grid gap-3 text-sm text-muted-foreground">{group.items.map((item) => <li key={item} className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-primary" />{item}</li>)}</ul></div>;
+            })}
+          </div>
+        </Section>
+
+        <Section id="contato" title={t.contactTitle}>
+          <div className="rounded-2xl border border-primary bg-primary/5 p-8 text-center md:p-12">
+            <p className="mx-auto max-w-2xl text-muted-foreground">{t.contactBody}</p>
+            <a href="mailto:vinicius@gamerbiz.com.br" className="mt-7 inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+              <Mail className="h-4 w-4" /> {t.contact}
+            </a>
+          </div>
+        </Section>
       </main>
 
       <footer className="mt-16 border-t border-border py-8 text-center text-sm text-muted-foreground">{t.footer}</footer>
     </div>
   );
+}
+
+function Section({ id, title, intro, eyebrow, children }: { id?: string; title: React.ReactNode; intro?: string; eyebrow?: string; children: React.ReactNode }) {
+  return <section id={id} className="scroll-mt-24 border-t border-border py-20">{eyebrow && <p className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-primary">{eyebrow}</p>}<h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">{title}</h2>{intro && <p className="mt-4 mb-10 max-w-2xl text-muted-foreground">{intro}</p>}{!intro && <div className="h-10" />}{children}</section>;
+}
+
+function IconBox({ children }: { children: React.ReactNode }) {
+  return <span className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-primary/10 text-primary">{children}</span>;
+}
+
+function JourneyCard({ icon, period, title, body }: { icon: React.ReactNode; period: string; title: string; body: string }) {
+  return <article className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary"><IconBox>{icon}</IconBox><p className="mt-5 text-xs font-bold uppercase tracking-wider text-primary">{period}</p><h3 className="mt-2 text-xl font-bold">{title}</h3><p className="mt-4 text-sm leading-relaxed text-muted-foreground">{body}</p></article>;
 }
