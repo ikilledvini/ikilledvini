@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import React, { useEffect, useState } from "react";
-import { Mail, Instagram, MessageCircle, Moon, Sun, Play, ChevronLeft, ChevronRight, Languages } from "lucide-react";
+import { ArrowUpRight, BarChart3, BriefcaseBusiness, ChevronLeft, ChevronRight, Instagram, Languages, Mail, Megaphone, MessageCircle, Moon, Play, Server, Sparkles, Sun, Target, Trophy, UsersRound } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
 import bueiroImg from "@/assets/bueiro.jpg";
 import joaoImg from "@/assets/joao.jpg";
@@ -289,7 +289,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
           </a>
           <div className="flex items-center gap-3 md:gap-6">
             {navItems.map((n) => (
-              <a key={n.href} href={n.href} className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline">
+              <a key={n.href} href={n.href} className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground lg:inline">
                 {n.label}
               </a>
             ))}
@@ -315,17 +315,17 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
       <main id="top" className="mx-auto max-w-6xl px-6 pt-32">
         {/* HERO */}
         <section className="grid items-center gap-12 pb-24 md:grid-cols-[auto_1fr] md:gap-16">
-          <div className="fade-in-up mx-auto h-40 w-40 overflow-hidden rounded-full border-4 border-primary md:h-56 md:w-56">
+          <div className="fade-in-up mx-auto h-40 w-40 overflow-hidden rounded-full border-4 border-primary shadow-[0_0_60px_rgba(160,110,255,0.18)] md:h-56 md:w-56">
             <img src={profileImg} alt="Vinicius de Alencar" className="h-full w-full object-cover" />
           </div>
           <div className="fade-in-up text-center md:text-left">
-            <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">{t.hello}</p>
-            <h1 className="text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+            <p className="text-sm font-medium uppercase tracking-[0.22em] text-muted-foreground">{t.hello}</p>
+            <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
               Vinicius de <span className="text-primary">Alencar</span>
             </h1>
-            <p className="mt-2 text-lg font-medium text-muted-foreground md:text-xl">@ikilledvini</p>
-            <p className="mt-2 text-sm font-medium text-primary">{t.location}</p>
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">{t.role}</p>
+            <p className="mt-3 text-lg font-medium text-muted-foreground">@ikilledvini</p>
+            <p className="mt-2 text-sm font-semibold text-primary">{t.location}</p>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">{t.role}</p>
             <div className="mt-6 flex items-center justify-center gap-3 md:justify-start">
               <a href="https://www.instagram.com/vinidealencar/" target="_blank" rel="noreferrer" aria-label="Instagram" className="rounded-full border border-border p-2.5 transition-colors hover:border-primary hover:text-primary">
                 <Instagram className="h-4 w-4" />
@@ -342,28 +342,35 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
 
         {/* SOBRE */}
         <Section id="sobre" title={t.aboutTitle}>
-          <p className="max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">{t.aboutBody}</p>
+          <div className="grid gap-5 rounded-2xl border border-border bg-card p-6 sm:grid-cols-[auto_1fr] md:p-8">
+            <IconBox><Sparkles className="h-5 w-5" /></IconBox>
+            <p className="max-w-4xl text-base leading-relaxed text-muted-foreground md:text-lg">{t.aboutBody}</p>
+          </div>
         </Section>
 
         {/* TRAJETÓRIA */}
         <Section id="trajetoria" title={t.trajectoryTitle}>
           <div className="grid gap-6 md:grid-cols-4">
             <TrajectoryBlock
+              icon={<Trophy className="h-5 w-5" />}
               year="2023"
               title={t.traj.roboticsTitle}
               body={t.traj.roboticsBody}
             />
             <TrajectoryBlock
+              icon={<UsersRound className="h-5 w-5" />}
               year="2024"
               title={t.traj.communitiesTitle}
               body={t.traj.communitiesBody}
             />
             <TrajectoryBlock
+              icon={<Megaphone className="h-5 w-5" />}
               year="2025"
               title={t.traj.managerTitle}
               body={t.traj.managerBody}
             />
             <TrajectoryBlock
+              icon={<BriefcaseBusiness className="h-5 w-5" />}
               year="2026"
               title="Gamerbiz"
               body={t.expGamerbizBody}
@@ -371,7 +378,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
           </div>
 
           {/* DESTAQUE MANAGER */}
-          <div className="mt-10 overflow-hidden rounded-2xl border-2 border-primary bg-primary/5 p-8 md:p-12">
+          <div className="mt-10 overflow-hidden rounded-2xl border border-primary bg-primary/5 p-8 md:p-12">
             <div className="grid items-start gap-8 md:grid-cols-[1fr_auto]">
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-primary">{t.brandsLabel}</p>
@@ -379,7 +386,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
                   {t.trustedBrands.map((brand) => (
                     <span
                       key={brand}
-                      className="rounded-full border-2 border-primary bg-background px-5 py-2 text-sm font-bold text-primary"
+                      className="rounded-full border border-primary/40 bg-background px-4 py-2 text-sm font-bold text-primary"
                     >
                       {brand}
                     </span>
@@ -438,15 +445,15 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
         <Section id="competencias" title={t.skillsTitle}>
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
-              <h4 className="text-lg font-bold text-primary">{t.skillsSocialTitle}</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                {t.skillsSocial.map((s) => (<li key={s}>• {s}</li>))}
+              <div className="flex items-center gap-3"><IconBox><BarChart3 className="h-5 w-5" /></IconBox><h4 className="text-lg font-bold">{t.skillsSocialTitle}</h4></div>
+              <ul className="mt-5 grid gap-3 text-sm text-muted-foreground">
+                {t.skillsSocial.map((s) => (<li key={s} className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-primary" />{s}</li>))}
               </ul>
             </Card>
             <Card>
-              <h4 className="text-lg font-bold text-primary">{t.skillsMgmtTitle}</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                {t.skillsMgmt.map((s) => (<li key={s}>• {s}</li>))}
+              <div className="flex items-center gap-3"><IconBox><Target className="h-5 w-5" /></IconBox><h4 className="text-lg font-bold">{t.skillsMgmtTitle}</h4></div>
+              <ul className="mt-5 grid gap-3 text-sm text-muted-foreground">
+                {t.skillsMgmt.map((s) => (<li key={s} className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-primary" />{s}</li>))}
               </ul>
             </Card>
           </div>
@@ -456,7 +463,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
         <Section id="projetos" title={t.discordTitle}>
           <p className="mb-10 max-w-2xl text-base text-muted-foreground">{t.discordIntro}</p>
 
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">{t.brandsSection}</h3>
+          <h3 className="mb-4 flex items-center gap-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground"><IconBox><Server className="h-5 w-5" /></IconBox>{t.brandsSection}</h3>
           <div className="mb-10 grid gap-6">
             <Card>
               <div className="flex items-start gap-4">
@@ -477,7 +484,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
                 className="mt-5 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
               >
                 <MessageCircle className="h-4 w-4" />
-                {t.partnerHubCTA}
+                {t.partnerHubCTA} <ArrowUpRight className="h-4 w-4" />
               </a>
             </Card>
             <Card>
@@ -496,7 +503,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
             </Card>
           </div>
 
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">{t.influencersSection}</h3>
+          <h3 className="mb-4 flex items-center gap-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground"><IconBox><UsersRound className="h-5 w-5" /></IconBox>{t.influencersSection}</h3>
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
               <div className="flex items-start gap-4">
@@ -543,8 +550,9 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
 
         {/* CONTATO */}
         <Section id="contato" title={t.contactTitle}>
-          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">{t.contactBody}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="rounded-2xl border border-primary bg-primary/5 p-8 text-center md:p-12">
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground">{t.contactBody}</p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
             <a href="mailto:vinicius@gamerbiz.com.br" className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
               <Mail className="h-4 w-4" /> Email
             </a>
@@ -552,8 +560,9 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
               <MessageCircle className="h-4 w-4" /> Discord
             </a>
           </div>
-          <div className="mt-10 rounded-xl border-2 border-primary bg-primary/5 p-6 text-center">
+          <div className="mt-8 rounded-xl border border-primary/30 bg-background/50 p-5 text-center">
             <p className="text-sm font-semibold md:text-base">{t.contactCard}</p>
+          </div>
           </div>
         </Section>
       </main>
@@ -570,7 +579,8 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
 function Section({ id, title, children }: { id?: string; title: React.ReactNode; children: React.ReactNode }) {
   return (
     <section id={id} className="fade-in-up scroll-mt-24 border-t border-border py-20">
-      <h2 className="mb-10 text-3xl font-extrabold tracking-tight md:text-4xl">{title}</h2>
+      <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">{title}</h2>
+      <div className="h-10" />
       {children}
     </section>
   );
@@ -578,16 +588,21 @@ function Section({ id, title, children }: { id?: string; title: React.ReactNode;
 
 function Card({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md md:p-7">
+    <div className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary md:p-7">
       {children}
     </div>
   );
 }
 
-function TrajectoryBlock({ year, title, body }: { year: string; title: string; body: string }) {
+function IconBox({ children }: { children: React.ReactNode }) {
+  return <span className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-primary/10 text-primary">{children}</span>;
+}
+
+function TrajectoryBlock({ icon, year, title, body }: { icon: React.ReactNode; year: string; title: string; body: string }) {
   return (
-    <div className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary">
-      <p className="text-xs font-bold uppercase tracking-widest text-primary">{year}</p>
+    <div className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary">
+      <IconBox>{icon}</IconBox>
+      <p className="mt-5 text-xs font-bold uppercase tracking-widest text-primary">{year}</p>
       <h3 className="mt-2 text-lg font-bold">{title}</h3>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
     </div>
