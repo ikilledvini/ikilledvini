@@ -2,11 +2,11 @@ import { Link } from "@tanstack/react-router";
 import React, { useEffect, useState } from "react";
 import { Mail, Instagram, MessageCircle, Moon, Sun, Play, ChevronLeft, ChevronRight, Languages } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
-import bueiroImg from "@/assets/bueiro.jpg.asset.json";
-import joaoImg from "@/assets/joao.jpg.asset.json";
-import casaBrawlImg from "@/assets/casabrawl.png.asset.json";
-import gamerbizImg from "@/assets/gamerbiz.jpg.asset.json";
-import partnerHubImg from "@/assets/gamerbiz-partner.png.asset.json";
+import bueiroImg from "@/assets/bueiro.jpg";
+import joaoImg from "@/assets/joao.jpg";
+import casaBrawlImg from "@/assets/casabrawl.png";
+import gamerbizImg from "@/assets/gamerbiz.jpg";
+import partnerHubImg from "@/assets/gamerbiz-partner.png";
 
 type Lang = "pt" | "en";
 
@@ -404,7 +404,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
           <div className="mb-8 overflow-hidden rounded-2xl border-2 border-primary bg-primary/5 p-6 md:p-10">
             <div className="grid items-start gap-8 md:grid-cols-[auto_1fr]">
               <img
-                src={gamerbizImg.url}
+                src={gamerbizImg}
                 alt="Gamerbiz"
                 className="h-24 w-24 rounded-xl object-cover shadow-lg md:h-32 md:w-32"
               />
@@ -458,7 +458,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
           <div className="mb-10 grid gap-6">
             <Card>
               <div className="flex items-start gap-4">
-                <img src={partnerHubImg.url} alt="Gamerbiz Partner Hub" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
+                <img src={partnerHubImg} alt="Gamerbiz Partner Hub" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <h4 className="text-xl font-bold">{t.partnerHubTitle}</h4>
@@ -480,7 +480,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
             </Card>
             <Card>
               <div className="flex items-start gap-4">
-                <img src={casaBrawlImg.url} alt="Casa Brawl" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
+                <img src={casaBrawlImg} alt="Casa Brawl" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <h4 className="text-xl font-bold">Casa Brawl</h4>
@@ -498,7 +498,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
               <div className="flex items-start gap-4">
-                <img src={joaoImg.url} alt="Clube do Joaopdzin" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
+                <img src={joaoImg} alt="Clube do Joaopdzin" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <h4 className="text-xl font-bold">Clube do Joaopdzin</h4>
@@ -512,7 +512,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
             </Card>
             <Card>
               <div className="flex items-start gap-4">
-                <img src={bueiroImg.url} alt="Bueiro do Neston" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
+                <img src={bueiroImg} alt="Bueiro do Neston" className="h-14 w-14 flex-shrink-0 rounded-lg object-cover" />
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <h4 className="text-xl font-bold">Bueiro do Neston</h4>
@@ -615,7 +615,7 @@ function CasesSection({ t }: { t: typeof I18N[Lang] }) {
             url: "https://www.youtube.com/shorts/N8pCV7LtNtw",
             title: "O @duolingobroficial REC...",
             author: "João Pdzin",
-            avatar: joaoImg.url,
+            avatar: joaoImg,
           },
         ]}
         titleNodes={t.duolingoTitleNodes(DUOLINGO_GREEN)}

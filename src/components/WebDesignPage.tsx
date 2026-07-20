@@ -19,7 +19,7 @@ import {
 import { useEffect, useState } from "react";
 import profileImg from "@/assets/profile.jpeg";
 import roboticsImg from "@/assets/robotics-award.jpg";
-import gamerbizImg from "@/assets/gamerbiz.jpg.asset.json";
+import gamerbizImg from "@/assets/gamerbiz.jpg";
 
 type Lang = "pt" | "en";
 
@@ -310,7 +310,7 @@ export function WebDesignPage({ lang }: { lang: Lang }) {
         <Section id="experiencia" title={t.experienceTitle}>
           <div className="mb-8 overflow-hidden rounded-2xl border-2 border-primary bg-primary/5 p-6 md:p-10">
             <div className="grid items-start gap-8 md:grid-cols-[auto_1fr]">
-              <img src={gamerbizImg.url} alt="Gamerbiz" className="h-24 w-24 rounded-xl object-cover shadow-lg md:h-32 md:w-32" />
+              <img src={gamerbizImg} alt="Gamerbiz" className="h-24 w-24 rounded-xl object-cover shadow-lg md:h-32 md:w-32" />
               <div>
                 <p className="text-sm font-bold text-primary">{t.experiencePeriod}</p>
                 <h3 className="mt-1 text-2xl font-extrabold md:text-3xl">{t.experienceCompany}</h3>
