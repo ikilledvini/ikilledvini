@@ -62,6 +62,7 @@ const copy = {
     language: "Mudar para inglês",
     themeAria: "Alternar tema",
     nav: [
+      ["sobre", "Sobre"],
       ["trajetoria", "Trajetória"],
       ["projetos", "Projetos"],
       ["formacao", "Formação"],
@@ -72,6 +73,8 @@ const copy = {
     location: "Fortaleza, CE, Brasil",
     role: "Web Designer · Desenvolvedor de Sistemas · Criador de Experiências Digitais",
     intro: "Transformo ideias em interfaces claras, responsivas e preparadas para gerar conexões reais entre pessoas, creators e marcas.",
+    aboutTitle: <>Sobre <span className="text-primary">Mim</span></>,
+    aboutBody: "Olá! Meu nome é Vinicius, tenho 17 anos e desde sempre tive uma paixão em me apresentar e sentir que consegui conectar as pessoas. Comecei na robótica competitiva, passei pela gestão exclusiva de comunidades digitais e hoje trabalho ajudando influenciadores e marcas a crescerem de forma orgânica. Sou curioso por natureza, autodidata e sempre gosto de estar fazendo coisas que me instiguem a aprender mais.",
     trajectoryTitle: <>Minha <span className="text-primary">Trajetória</span></>,
     trajectoryIntro: "Uma trajetória construída entre criatividade, tecnologia e comunidades digitais.",
     roboticsTitle: "Robótica",
@@ -119,6 +122,7 @@ const copy = {
     language: "Switch to Portuguese",
     themeAria: "Toggle theme",
     nav: [
+      ["sobre", "About"],
       ["trajetoria", "Journey"],
       ["projetos", "Projects"],
       ["formacao", "Education"],
@@ -129,6 +133,8 @@ const copy = {
     location: "Fortaleza, CE, Brazil",
     role: "Web Designer · Systems Developer · Digital Experience Creator",
     intro: "I turn ideas into clear, responsive interfaces designed to create real connections between people, creators and brands.",
+    aboutTitle: <>About <span className="text-primary">Me</span></>,
+    aboutBody: "Hi! My name is Vinicius, I'm 17 and I've always been passionate about presenting and connecting people. I started in competitive robotics, moved into managing digital communities, and today I help influencers and brands grow organically. I'm naturally curious, self-taught, and I always enjoy working on things that push me to learn more.",
     trajectoryTitle: <>My <span className="text-primary">Journey</span></>,
     trajectoryIntro: "A journey built at the intersection of creativity, technology and digital communities.",
     roboticsTitle: "Robotics",
@@ -251,6 +257,10 @@ export function WebDesignPage({ lang }: { lang: Lang }) {
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">{t.intro}</p>
           </div>
         </section>
+
+        <Section id="sobre" title={t.aboutTitle}>
+          <p className="max-w-4xl text-base leading-relaxed text-muted-foreground md:text-lg">{t.aboutBody}</p>
+        </Section>
 
         <Section id="trajetoria" title={t.trajectoryTitle} intro={t.trajectoryIntro}>
           <article className="overflow-hidden rounded-2xl border border-border bg-card">
