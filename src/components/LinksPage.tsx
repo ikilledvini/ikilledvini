@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, BriefcaseBusiness, Code2, Instagram, Linkedin, Mail, MessageCircle, Moon, Sun } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, Code2, Instagram, Languages, Linkedin, Mail, MessageCircle, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import profileImg from "@/assets/profile.jpeg";
 
@@ -30,14 +30,36 @@ const socialLinks = [
   },
 ] as const;
 
-export function LinksPage() {
+type Lang = "pt" | "en";
+
+const copy = {
+  pt: {
+    role: "Web Designer, Influencer Manager",
+    socialDescription: "Comunidades, creators e campanhas",
+    webDescription: "Sites, interfaces e tecnologia",
+    themeLabel: "Alternar tema",
+    languageLabel: "Ver página em inglês",
+  },
+  en: {
+    role: "Web Designer, Influencer Manager",
+    socialDescription: "Communities, creators and campaigns",
+    webDescription: "Websites, interfaces and technology",
+    themeLabel: "Toggle theme",
+    languageLabel: "View page in Portuguese",
+  },
+} as const;
+
+export function LinksPage({ lang = "pt" }: { lang?: Lang }) {
   const [dark, setDark] = useState(false);
+  const t = copy[lang];
+  const prefix = lang === "en" ? "/en" : "";
+  const languageTarget = lang === "en" ? "/links" : "/en/links";
 
   useEffect(() => {
     const stored = localStorage.getItem("theme");
     setDark(stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches);
-    document.documentElement.lang = "pt-BR";
-  }, []);
+    document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+  }, [lang]);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
@@ -57,8 +79,12 @@ export function LinksPage() {
       <div className="pointer-events-none absolute -bottom-48 -right-32 h-[28rem] w-[28rem] rounded-full bg-primary/10 blur-3xl" />
 
       <section className="relative w-full max-w-xl">
-        <div className="flex justify-end">
-          <button onClick={toggleTheme} aria-label="Alternar tema" className="rounded-full border border-border bg-card p-2.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+        <div className="flex justify-end gap-2">
+          <Link to={languageTarget} aria-label={t.languageLabel} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-2.5 text-xs font-bold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+            <Languages className="h-4 w-4" />
+            {lang === "pt" ? "EN" : "PT"}
+          </Link>
+          <button onClick={toggleTheme} aria-label={t.themeLabel} className="rounded-full border border-border bg-card p-2.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
             {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
         </div>
@@ -69,7 +95,7 @@ export function LinksPage() {
           </div>
           <h1 className="mt-5 text-3xl font-extrabold tracking-tight">Vinicius de <span className="text-primary">Alencar</span></h1>
           <p className="mt-1 font-medium text-muted-foreground">@ikilledvini</p>
-          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">Web Designer, Influencer Manager</p>
+          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">{t.role}</p>
         </div>
 
         <div className="mt-8 space-y-3">
@@ -83,19 +109,19 @@ export function LinksPage() {
         </div>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          <Link to="/socialmedia" className="group rounded-2xl border border-border bg-card p-5 transition duration-300 hover:-translate-y-0.5 hover:border-primary">
+          <Link to={`${prefix}/socialmedia`} className="group rounded-2xl border border-border bg-card p-5 transition duration-300 hover:-translate-y-0.5 hover:border-primary">
             <BriefcaseBusiness className="h-5 w-5 text-primary" />
             <span className="mt-4 flex items-center justify-between font-bold">Social Media <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></span>
-            <span className="mt-1 block text-xs text-muted-foreground">Comunidades, creators e campanhas</span>
+            <span className="mt-1 block text-xs text-muted-foreground">{t.socialDescription}</span>
           </Link>
-          <Link to="/webdesign" className="group rounded-2xl border border-border bg-card p-5 transition duration-300 hover:-translate-y-0.5 hover:border-primary">
+          <Link to={`${prefix}/webdesign`} className="group rounded-2xl border border-border bg-card p-5 transition duration-300 hover:-translate-y-0.5 hover:border-primary">
             <Code2 className="h-5 w-5 text-primary" />
             <span className="mt-4 flex items-center justify-between font-bold">Webdesign <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></span>
-            <span className="mt-1 block text-xs text-muted-foreground">Sites, interfaces e tecnologia</span>
+            <span className="mt-1 block text-xs text-muted-foreground">{t.webDescription}</span>
           </Link>
         </div>
 
-        <Link to="/" className="mt-8 block text-center text-xs font-bold tracking-wider text-muted-foreground transition-colors hover:text-primary">
+        <Link to={lang === "en" ? "/en" : "/"} className="mt-8 block text-center text-xs font-bold tracking-wider text-muted-foreground transition-colors hover:text-primary">
           ikilled<span className="text-primary">vini</span>
         </Link>
       </section>
