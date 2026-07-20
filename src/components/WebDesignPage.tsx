@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import {
-  ArrowLeft,
   ArrowUpRight,
   Bot,
   BriefcaseBusiness,
@@ -10,11 +9,13 @@ import {
   Languages,
   Layout,
   Mail,
+  Moon,
   Server,
   Smartphone,
+  Sun,
   Trophy,
 } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import profileImg from "@/assets/profile.jpeg";
 import roboticsImg from "@/assets/robotics-award.jpg";
 
@@ -57,6 +58,7 @@ const copy = {
   pt: {
     back: "Início",
     language: "Mudar para inglês",
+    themeAria: "Alternar tema",
     nav: [
       ["trajetoria", "Trajetória"],
       ["projetos", "Projetos"],
@@ -109,6 +111,7 @@ const copy = {
   en: {
     back: "Home",
     language: "Switch to Portuguese",
+    themeAria: "Toggle theme",
     nav: [
       ["trajetoria", "Journey"],
       ["projetos", "Projects"],
@@ -164,32 +167,68 @@ export function WebDesignPage({ lang }: { lang: Lang }) {
   const t = copy[lang];
   const home = lang === "en" ? "/en" : "/";
   const languageTarget = lang === "en" ? "/webdesign" : "/en/webdesign";
+  const [dark, setDark] = useState(false);
+  const [themeUserSet, setThemeUserSet] = useState(false);
+
+  useEffect(() => {
+    const stored = typeof window !== "undefined" ? localStorage.getItem("theme") : null;
+    if (stored === "dark" || stored === "light") {
+      setDark(stored === "dark");
+      setThemeUserSet(true);
+    } else if (typeof window !== "undefined" && window.matchMedia) {
+      setDark(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (themeUserSet || typeof window === "undefined" || !window.matchMedia) return;
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (event: MediaQueryListEvent) => setDark(event.matches);
+    media.addEventListener("change", handleChange);
+    return () => media.removeEventListener("change", handleChange);
+  }, [themeUserSet]);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+  }, [dark]);
 
   useEffect(() => {
     document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
   }, [lang]);
 
+  const toggleTheme = () => {
+    setDark((current) => {
+      const next = !current;
+      try { localStorage.setItem("theme", next ? "dark" : "light"); } catch {}
+      return next;
+    });
+    setThemeUserSet(true);
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link to={home} className="inline-flex items-center gap-2 text-sm font-bold transition-colors hover:text-primary">
-            <ArrowLeft className="h-4 w-4" /> {t.back}
+          <Link to={home} className="text-sm font-bold tracking-tight" aria-label={t.back}>
+            ikilled<span className="text-primary">vini</span>
           </Link>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-3 md:gap-6">
             {t.nav.map(([id, label]) => (
-              <a key={id} href={`#${id}`} className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground lg:block">{label}</a>
+              <a key={id} href={`#${id}`} className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground lg:inline">{label}</a>
             ))}
-            <Link to={languageTarget} aria-label={t.language} className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs font-bold uppercase tracking-wider hover:border-primary">
+            <Link to={languageTarget} aria-label={t.language} className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors hover:bg-muted">
               <Languages className="h-3.5 w-3.5" /> {lang === "pt" ? "EN" : "PT"}
             </Link>
+            <button onClick={toggleTheme} aria-label={t.themeAria} className="rounded-full border border-border p-2 transition-colors hover:bg-muted">
+              {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
           </div>
         </nav>
       </header>
 
-      <main className="mx-auto max-w-6xl px-6">
-        <section className="grid items-center gap-12 py-20 md:grid-cols-[auto_1fr] md:gap-16 md:py-28">
-          <div className="mx-auto h-44 w-44 overflow-hidden rounded-full border-4 border-primary shadow-[0_0_60px_rgba(160,110,255,0.18)] md:h-60 md:w-60">
+      <main id="top" className="mx-auto max-w-6xl px-6 pt-32">
+        <section className="grid items-center gap-12 pb-24 md:grid-cols-[auto_1fr] md:gap-16">
+          <div className="mx-auto h-40 w-40 overflow-hidden rounded-full border-4 border-primary shadow-[0_0_60px_rgba(160,110,255,0.18)] md:h-56 md:w-56">
             <img src={profileImg} alt="Vinicius de Alencar" className="h-full w-full object-cover" />
           </div>
           <div className="text-center md:text-left">
