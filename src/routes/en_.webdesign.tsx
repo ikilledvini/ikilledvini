@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { WebDesignPage } from "@/components/WebDesignPage";
 
-export const Route = createFileRoute("/en/webdesign")({
+export const Route = createFileRoute("/en_/webdesign")({
   head: () => ({
     meta: [
       { title: "Web Design — Vinicius de Alencar" },
