@@ -13,6 +13,8 @@ const copy = {
     socialDescription: "Comunidades, influenciadores, campanhas e estratégia digital.",
     web: "Webdesign",
     webDescription: "Interfaces, experiências digitais e desenvolvimento web.",
+    links: "Links & Contato",
+    linksDescription: "Redes sociais, contato e todos os meus canais em um só lugar.",
     languageLabel: "Ver página em inglês",
   },
   en: {
@@ -22,6 +24,8 @@ const copy = {
     socialDescription: "Communities, influencers, campaigns and digital strategy.",
     web: "Web Design",
     webDescription: "Interfaces, digital experiences and web development.",
+    links: "Links & Contact",
+    linksDescription: "Social profiles, contact details and all my channels in one place.",
     languageLabel: "Ver página em português",
   },
 } as const;
@@ -75,6 +79,9 @@ export function PortfolioHome({ lang }: { lang: Lang }) {
                 description={t.webDescription}
               />
             </div>
+            <div className="mt-4">
+              <PortfolioLink to={`${prefix}/links`} title={t.links} description={t.linksDescription} />
+            </div>
           </div>
         </section>
       </div>
@@ -86,7 +93,7 @@ function PortfolioLink({ to, title, description }: { to: string; title: string; 
   return (
     <Link
       to={to}
-      className="group rounded-2xl border border-white/15 bg-white/[0.04] p-5 text-left transition duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary/10"
+      className="group block rounded-2xl border border-white/15 bg-white/[0.04] p-5 text-left transition duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary/10"
     >
       <span className="flex items-center justify-between text-lg font-bold">
         {title}
