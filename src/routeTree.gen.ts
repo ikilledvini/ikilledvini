@@ -9,9 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WebdesignRouteImport } from './routes/webdesign'
+import { Route as SocialmediaRouteImport } from './routes/socialmedia'
 import { Route as EnRouteImport } from './routes/en'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EnWebdesignRouteImport } from './routes/en.webdesign'
+import { Route as EnSocialmediaRouteImport } from './routes/en.socialmedia'
 
+const WebdesignRoute = WebdesignRouteImport.update({
+  id: '/webdesign',
+  path: '/webdesign',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SocialmediaRoute = SocialmediaRouteImport.update({
+  id: '/socialmedia',
+  path: '/socialmedia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnRoute = EnRouteImport.update({
   id: '/en',
   path: '/en',
@@ -22,35 +36,92 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnWebdesignRoute = EnWebdesignRouteImport.update({
+  id: '/webdesign',
+  path: '/webdesign',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnSocialmediaRoute = EnSocialmediaRouteImport.update({
+  id: '/socialmedia',
+  path: '/socialmedia',
+  getParentRoute: () => EnRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/en': typeof EnRoute
+  '/en': typeof EnRouteWithChildren
+  '/socialmedia': typeof SocialmediaRoute
+  '/webdesign': typeof WebdesignRoute
+  '/en/socialmedia': typeof EnSocialmediaRoute
+  '/en/webdesign': typeof EnWebdesignRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/en': typeof EnRoute
+  '/en': typeof EnRouteWithChildren
+  '/socialmedia': typeof SocialmediaRoute
+  '/webdesign': typeof WebdesignRoute
+  '/en/socialmedia': typeof EnSocialmediaRoute
+  '/en/webdesign': typeof EnWebdesignRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/en': typeof EnRoute
+  '/en': typeof EnRouteWithChildren
+  '/socialmedia': typeof SocialmediaRoute
+  '/webdesign': typeof WebdesignRoute
+  '/en/socialmedia': typeof EnSocialmediaRoute
+  '/en/webdesign': typeof EnWebdesignRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/en'
+  fullPaths:
+    | '/'
+    | '/en'
+    | '/socialmedia'
+    | '/webdesign'
+    | '/en/socialmedia'
+    | '/en/webdesign'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/en'
-  id: '__root__' | '/' | '/en'
+  to:
+    | '/'
+    | '/en'
+    | '/socialmedia'
+    | '/webdesign'
+    | '/en/socialmedia'
+    | '/en/webdesign'
+  id:
+    | '__root__'
+    | '/'
+    | '/en'
+    | '/socialmedia'
+    | '/webdesign'
+    | '/en/socialmedia'
+    | '/en/webdesign'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  EnRoute: typeof EnRoute
+  EnRoute: typeof EnRouteWithChildren
+  SocialmediaRoute: typeof SocialmediaRoute
+  WebdesignRoute: typeof WebdesignRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/webdesign': {
+      id: '/webdesign'
+      path: '/webdesign'
+      fullPath: '/webdesign'
+      preLoaderRoute: typeof WebdesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/socialmedia': {
+      id: '/socialmedia'
+      path: '/socialmedia'
+      fullPath: '/socialmedia'
+      preLoaderRoute: typeof SocialmediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en': {
       id: '/en'
       path: '/en'
@@ -65,13 +136,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/webdesign': {
+      id: '/en/webdesign'
+      path: '/webdesign'
+      fullPath: '/en/webdesign'
+      preLoaderRoute: typeof EnWebdesignRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/socialmedia': {
+      id: '/en/socialmedia'
+      path: '/socialmedia'
+      fullPath: '/en/socialmedia'
+      preLoaderRoute: typeof EnSocialmediaRouteImport
+      parentRoute: typeof EnRoute
+    }
   }
 }
 
+interface EnRouteChildren {
+  EnSocialmediaRoute: typeof EnSocialmediaRoute
+  EnWebdesignRoute: typeof EnWebdesignRoute
+}
+
+const EnRouteChildren: EnRouteChildren = {
+  EnSocialmediaRoute: EnSocialmediaRoute,
+  EnWebdesignRoute: EnWebdesignRoute,
+}
+
+const EnRouteWithChildren = EnRoute._addFileChildren(EnRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  EnRoute: EnRoute,
+  EnRoute: EnRouteWithChildren,
+  SocialmediaRoute: SocialmediaRoute,
+  WebdesignRoute: WebdesignRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

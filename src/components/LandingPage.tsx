@@ -247,7 +247,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
     setThemeUserSet(true);
   };
 
-  const langTarget = lang === "pt" ? "/en" : "/";
+  const langTarget = lang === "pt" ? "/en/socialmedia" : "/socialmedia";
   const langLabel = lang === "pt" ? "EN" : "PT";
 
   const t = I18N[lang];
