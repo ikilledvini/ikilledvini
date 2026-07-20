@@ -112,7 +112,7 @@ const copy = {
     contactBody: "Estou disponível para novos sites, interfaces, media kits e projetos digitais.",
     contact: "Falar comigo",
     linksButton: "Ver links e redes",
-    footer: "© 2026 ikilledvini (Vinicius de Alencar).",
+    footer: "Vinicius de Alencar",
   },
   en: {
     back: "Home",
@@ -169,7 +169,7 @@ const copy = {
     contactBody: "I'm available for new websites, interfaces, media kits and digital projects.",
     contact: "Get in touch",
     linksButton: "View links and socials",
-    footer: "© 2026 ikilledvini (Vinicius de Alencar).",
+    footer: "Vinicius de Alencar",
   },
 } as const;
 
