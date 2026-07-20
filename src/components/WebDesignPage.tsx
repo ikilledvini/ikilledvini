@@ -274,12 +274,12 @@ export function WebDesignPage({ lang }: { lang: Lang }) {
         <Section id="projetos" title={t.projectsTitle} intro={t.projectsIntro} eyebrow={t.projectsEyebrow}>
           <div className="space-y-8">
             {projects.map((project, index) => (
-              <article key={project.url} className="grid overflow-hidden rounded-2xl border border-border bg-card md:grid-cols-[1.15fr_1fr]">
-                <div className={`relative min-h-72 overflow-hidden bg-muted ${index % 2 ? "md:order-2" : ""}`}>
-                  <iframe src={project.url} title={`${project.title} preview`} loading="lazy" tabIndex={-1} className="pointer-events-none absolute left-0 top-0 h-[768px] w-[1366px] origin-top-left scale-[0.48] sm:scale-[0.58] md:scale-[0.48]" />
+              <article key={project.url} className="grid overflow-hidden rounded-2xl border border-border bg-card lg:grid-cols-[1.15fr_1fr]">
+                <div className={`relative aspect-[16/9] min-h-64 overflow-hidden bg-muted lg:aspect-auto lg:min-h-80 ${index % 2 ? "lg:order-2" : ""}`}>
+                  <iframe src={project.url} title={`${project.title} preview`} loading="lazy" tabIndex={-1} className="pointer-events-none absolute left-0 top-0 h-[200%] w-[200%] origin-top-left scale-50" />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
                 </div>
-                <div className="flex flex-col justify-center p-7 md:p-10">
+                <div className="flex flex-col justify-center p-7 lg:p-10">
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{project.type[lang]}</p>
                   <h3 className="mt-3 text-2xl font-extrabold md:text-3xl">{project.title}</h3>
                   <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">{project.description[lang]}</p>
