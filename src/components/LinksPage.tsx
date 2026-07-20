@@ -69,7 +69,7 @@ export function LinksPage() {
           </div>
           <h1 className="mt-5 text-3xl font-extrabold tracking-tight">Vinicius de <span className="text-primary">Alencar</span></h1>
           <p className="mt-1 font-medium text-muted-foreground">@ikilledvini</p>
-          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">Web Designer, Manager de Influenciadores e Gestor de Comunidades Digitais.</p>
+          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">Web Designer, Influencer Manager</p>
         </div>
 
         <div className="mt-8 space-y-3">
