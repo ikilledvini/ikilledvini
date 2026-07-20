@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import React, { useEffect, useState } from "react";
-import { ArrowUpRight, BarChart3, BriefcaseBusiness, ChevronLeft, ChevronRight, Instagram, Languages, Mail, Megaphone, MessageCircle, Moon, Play, Server, Sparkles, Sun, Target, Trophy, UsersRound } from "lucide-react";
+import { ArrowUpRight, BarChart3, BriefcaseBusiness, ChevronLeft, ChevronRight, Instagram, Languages, Mail, Megaphone, MessageCircle, Moon, Play, Server, Sun, Target, Trophy, UsersRound } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
 import bueiroImg from "@/assets/bueiro.jpg";
 import joaoImg from "@/assets/joao.jpg";
@@ -32,7 +32,7 @@ const I18N = {
       managerBody: "Conectei criadores de conteúdo a campanhas pagas com grandes marcas, entregando resultados reais e mensuráveis. Desde 2026, integro a Gamerbiz intermediando relações e estipulando campanhas entre influenciadores e empresas.",
     },
     brandsLabel: "Marcas que confiaram no trabalho",
-    trustedBrands: ["Duolingo", "Havit", "Fifine", "e mais"],
+    trustedBrands: ["Duolingo", "Havit", "Fifine", "Artemis Limited", "e mais"],
     viewsLabel: "visualizações geradas",
     partnershipsLabel: "em parcerias movimentadas",
     casesEyebrow: "| CASES DE SUCESSO",
@@ -129,7 +129,7 @@ const I18N = {
       managerBody: "I connected content creators to paid campaigns with major brands, delivering real and measurable results. Since 2026, I've been part of Gamerbiz mediating relationships and setting up campaigns between influencers and companies.",
     },
     brandsLabel: "Brands that trusted my work",
-    trustedBrands: ["Duolingo", "Havit", "Fifine", "and more"],
+    trustedBrands: ["Duolingo", "Havit", "Fifine", "Artemis Limited", "and more"],
     viewsLabel: "views generated",
     partnershipsLabel: "in partnerships moved",
     casesEyebrow: "| SUCCESS CASES",
@@ -346,10 +346,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
 
         {/* SOBRE */}
         <Section id="sobre" title={t.aboutTitle}>
-          <div className="grid gap-5 rounded-2xl border border-border bg-card p-6 sm:grid-cols-[auto_1fr] md:p-8">
-            <IconBox><Sparkles className="h-5 w-5" /></IconBox>
-            <p className="max-w-4xl text-base leading-relaxed text-muted-foreground md:text-lg">{t.aboutBody}</p>
-          </div>
+          <p className="max-w-4xl text-base leading-relaxed text-muted-foreground md:text-lg">{t.aboutBody}</p>
         </Section>
 
         {/* TRAJETÓRIA */}
@@ -382,30 +379,26 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
           </div>
 
           {/* DESTAQUE MANAGER */}
-          <div className="mt-10 overflow-hidden rounded-2xl border border-primary bg-primary/5 p-8 md:p-12">
-            <div className="grid items-start gap-8 md:grid-cols-[1fr_auto]">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-primary">{t.brandsLabel}</p>
-                <div className="mt-5 flex flex-wrap gap-3">
+          <div className="mt-12 border-y border-border py-8 md:py-10">
+            <p className="text-center text-xs font-bold uppercase tracking-[0.24em] text-primary">{t.brandsLabel}</p>
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-5 md:gap-x-12">
                   {t.trustedBrands.map((brand) => (
                     <span
                       key={brand}
-                      className="rounded-full border border-primary/40 bg-background px-4 py-2 text-sm font-bold text-primary"
+                      className="text-lg font-extrabold tracking-tight text-foreground transition-colors hover:text-primary md:text-2xl"
                     >
                       {brand}
                     </span>
                   ))}
-                </div>
+            </div>
+            <div className="mx-auto mt-9 grid max-w-2xl grid-cols-2 divide-x divide-border border-t border-border pt-7 text-center">
+              <div className="px-3">
+                <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+15M</p>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t.viewsLabel}</p>
               </div>
-              <div className="grid grid-cols-2 gap-6 text-center md:text-right">
-                <div>
-                  <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+15M</p>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t.viewsLabel}</p>
-                </div>
-                <div>
-                  <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+R$30K</p>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t.partnershipsLabel}</p>
-                </div>
+              <div className="px-3">
+                <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+R$30K</p>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t.partnershipsLabel}</p>
               </div>
             </div>
           </div>
