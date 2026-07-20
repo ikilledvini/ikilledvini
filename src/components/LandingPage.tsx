@@ -10,6 +10,8 @@ import partnerHubImg from "@/assets/gamerbiz-partner.png";
 
 type Lang = "pt" | "en";
 
+const BRAND_COLORS = ["#58cc02", "#e31e24", "#f59e0b", "#8b5cf6"] as const;
+
 const I18N = {
   pt: {
     nav: { sobre: "Sobre", trajetoria: "Trajetória", cases: "Cases", projetos: "Projetos", contato: "Contato" },
@@ -379,19 +381,25 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
           </div>
 
           {/* DESTAQUE MANAGER */}
-          <div className="mt-12 border-y border-border py-8 md:py-10">
+          <div className="mt-12 py-4 md:py-6">
             <p className="text-center text-xs font-bold uppercase tracking-[0.24em] text-primary">{t.brandsLabel}</p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-5 md:gap-x-12">
-                  {t.trustedBrands.map((brand) => (
-                    <span
-                      key={brand}
-                      className="text-lg font-extrabold tracking-tight text-foreground transition-colors hover:text-primary md:text-2xl"
-                    >
-                      {brand}
-                    </span>
-                  ))}
+              {t.trustedBrands.map((brand, index) => {
+                const isMore = index === t.trustedBrands.length - 1;
+                return (
+                  <span
+                    key={brand}
+                    style={isMore ? undefined : ({ "--brand-color": BRAND_COLORS[index] } as React.CSSProperties)}
+                    className={isMore
+                      ? "rounded-full bg-primary px-5 py-2 text-xl font-black tracking-tight text-primary-foreground shadow-[0_0_30px_rgba(160,110,255,0.25)] transition-transform hover:scale-105 md:text-2xl"
+                      : "text-lg font-extrabold tracking-tight text-foreground transition-colors duration-200 hover:text-[var(--brand-color)] md:text-2xl"}
+                  >
+                    {brand}
+                  </span>
+                );
+              })}
             </div>
-            <div className="mx-auto mt-9 grid max-w-2xl grid-cols-2 divide-x divide-border border-t border-border pt-7 text-center">
+            <div className="mx-auto mt-10 grid max-w-2xl grid-cols-2 divide-x divide-border text-center">
               <div className="px-3">
                 <p className="text-4xl font-extrabold leading-none tracking-tight text-primary md:text-6xl">+15M</p>
                 <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t.viewsLabel}</p>
