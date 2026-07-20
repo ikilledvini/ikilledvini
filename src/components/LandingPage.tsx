@@ -252,6 +252,7 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
   };
 
   const langTarget = lang === "pt" ? "/en/socialmedia" : "/socialmedia";
+  const homeTarget = lang === "pt" ? "/" : "/en";
   const linksTarget = lang === "pt" ? "/links" : "/en/links";
   const langLabel = lang === "pt" ? "EN" : "PT";
 
@@ -287,9 +288,9 @@ export function LandingPage({ initialLang = "pt" }: { initialLang?: Lang }) {
       {/* NAV */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#top" className="text-sm font-bold tracking-tight">
+          <Link to={homeTarget} className="text-sm font-bold tracking-tight">
             ikilled<span className="text-primary">vini</span>
-          </a>
+          </Link>
           <div className="flex items-center gap-3 md:gap-6">
             {navItems.map((n) => (
               <a key={n.href} href={n.href} className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground lg:inline">
