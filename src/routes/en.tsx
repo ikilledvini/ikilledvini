@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { LandingPage } from "@/components/LandingPage";
+import { PortfolioHome } from "@/components/PortfolioHome";
 
 export const Route = createFileRoute("/en")({
   head: () => ({
@@ -10,5 +10,5 @@ export const Route = createFileRoute("/en")({
       { property: "og:description", content: "Digital portfolio — communities, influencers and technology." },
     ],
   }),
-  component: () => <LandingPage initialLang="en" />,
+  component: () => <PortfolioHome lang="en" />,
 });
