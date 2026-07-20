@@ -6,6 +6,7 @@ import {
   Code2,
   Database,
   GraduationCap,
+  Instagram,
   Languages,
   Layout,
   Mail,
@@ -18,6 +19,7 @@ import {
 import { useEffect, useState } from "react";
 import profileImg from "@/assets/profile.jpeg";
 import roboticsImg from "@/assets/robotics-award.jpg";
+import gamerbizImg from "@/assets/gamerbiz.jpg.asset.json";
 
 type Lang = "pt" | "en";
 
@@ -88,14 +90,17 @@ const copy = {
     projectsTitle: <>Sites que unem <span className="text-primary">forma e função</span></>,
     projectsIntro: "Projetos reais e conceituais desenvolvidos para diferentes públicos e objetivos.",
     viewProject: "Visitar projeto",
-    educationEyebrow: "Formação acadêmica",
-    educationTitle: "Técnico em Desenvolvimento de Sistemas",
-    educationSchool: "SENAI · Janeiro de 2024 — Novembro de 2026",
+    educationTitle: <>Formação <span className="text-primary">Acadêmica</span></>,
+    educationSchool: "SENAI",
+    educationCourse: "Técnico em Desenvolvimento de Sistemas",
+    educationPeriod: "Janeiro de 2024 — Novembro de 2026",
     educationBody: "Formação técnica voltada ao ciclo completo de desenvolvimento de software: levantamento de requisitos, prototipação, lógica de programação, bancos de dados, desenvolvimento web, APIs, testes, versionamento e práticas de trabalho em equipe.",
     experienceTitle: <>Experiência <span className="text-primary">Profissional</span></>,
     experiencePeriod: "Junho de 2026 — Atualmente",
-    experienceRole: "Analista de Negócios · GamerBiz",
+    experienceCompany: "Gamerbiz",
+    experienceRole: "Analista de Negócios",
     experienceBody: "Auxílio no desenvolvimento de uma plataforma digital integrada de media kits para os influenciadores da agência, planejada para reunir e atualizar automaticamente informações estratégicas. Também fui responsável pela estruturação técnica do Discord da GamerBiz, conectando processos, creators e oportunidades comerciais.",
+    experienceCTA: "Ver no Instagram",
     skillsTitle: <>Competências <span className="text-primary">Principais</span></>,
     skillGroups: [
       { title: "Web & Interface", icon: Layout, items: ["HTML, CSS e JavaScript", "Interfaces responsivas", "Prototipação e UI design", "Acessibilidade e experiência do usuário"] },
@@ -141,14 +146,17 @@ const copy = {
     projectsTitle: <>Websites where <span className="text-primary">form meets function</span></>,
     projectsIntro: "Live and conceptual projects designed for different audiences and goals.",
     viewProject: "View project",
-    educationEyebrow: "Education",
-    educationTitle: "Systems Development Technician",
-    educationSchool: "SENAI · January 2024 — November 2026",
+    educationTitle: <>Academic <span className="text-primary">Education</span></>,
+    educationSchool: "SENAI",
+    educationCourse: "Systems Development Technician",
+    educationPeriod: "January 2024 — November 2026",
     educationBody: "Technical training covering the full software development cycle: requirements analysis, prototyping, programming logic, databases, web development, APIs, testing, version control and collaborative practices.",
     experienceTitle: <>Professional <span className="text-primary">Experience</span></>,
     experiencePeriod: "June 2026 — Present",
-    experienceRole: "Business Analyst · GamerBiz",
+    experienceCompany: "Gamerbiz",
+    experienceRole: "Business Analyst",
     experienceBody: "Supporting the development of an integrated digital media-kit platform for the agency's influencers, designed to centralize and automatically update strategic information. I was also responsible for the technical structure of GamerBiz's Discord, connecting processes, creators and commercial opportunities.",
+    experienceCTA: "See on Instagram",
     skillsTitle: <>Core <span className="text-primary">Skills</span></>,
     skillGroups: [
       { title: "Web & Interface", icon: Layout, items: ["HTML, CSS and JavaScript", "Responsive interfaces", "Prototyping and UI design", "Accessibility and user experience"] },
@@ -284,20 +292,35 @@ export function WebDesignPage({ lang }: { lang: Lang }) {
           </div>
         </Section>
 
-        <Section id="formacao" title={t.educationTitle} eyebrow={t.educationEyebrow}>
-          <div className="rounded-2xl border border-primary/30 bg-primary/5 p-7 md:p-10">
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
-              <IconBox><GraduationCap className="h-6 w-6" /></IconBox>
-              <div><p className="font-bold text-primary">{t.educationSchool}</p><p className="mt-4 max-w-4xl leading-relaxed text-muted-foreground">{t.educationBody}</p></div>
+        <Section id="formacao" title={t.educationTitle}>
+          <div className="grid items-start gap-5 sm:grid-cols-[auto_1fr] sm:gap-7">
+            <IconBox><GraduationCap className="h-6 w-6" /></IconBox>
+            <div>
+              <h3 className="text-2xl font-extrabold tracking-tight md:text-3xl">
+                <span className="text-primary">{t.educationSchool}</span>
+                <span className="mx-2 text-foreground">•</span>
+                {t.educationCourse}
+              </h3>
+              <p className="mt-3 font-bold text-primary">{t.educationPeriod}</p>
+              <p className="mt-2 max-w-4xl leading-relaxed text-muted-foreground">{t.educationBody}</p>
             </div>
           </div>
         </Section>
 
-        <Section title={t.experienceTitle}>
-          <div className="rounded-2xl border border-border bg-card p-7 md:p-10">
-            <p className="text-xs font-bold uppercase tracking-widest text-primary">{t.experiencePeriod}</p>
-            <h3 className="mt-3 text-2xl font-bold">{t.experienceRole}</h3>
-            <p className="mt-5 max-w-4xl leading-relaxed text-muted-foreground">{t.experienceBody}</p>
+        <Section id="experiencia" title={t.experienceTitle}>
+          <div className="mb-8 overflow-hidden rounded-2xl border-2 border-primary bg-primary/5 p-6 md:p-10">
+            <div className="grid items-start gap-8 md:grid-cols-[auto_1fr]">
+              <img src={gamerbizImg.url} alt="Gamerbiz" className="h-24 w-24 rounded-xl object-cover shadow-lg md:h-32 md:w-32" />
+              <div>
+                <p className="text-sm font-bold text-primary">{t.experiencePeriod}</p>
+                <h3 className="mt-1 text-2xl font-extrabold md:text-3xl">{t.experienceCompany}</h3>
+                <p className="mt-1 text-base font-medium text-muted-foreground">{t.experienceRole}</p>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">{t.experienceBody}</p>
+                <a href="https://www.instagram.com/gamerbizbr/" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+                  <Instagram className="h-4 w-4" /> {t.experienceCTA}
+                </a>
+              </div>
+            </div>
           </div>
         </Section>
 
